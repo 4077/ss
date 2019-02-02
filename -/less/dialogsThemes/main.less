@@ -1,0 +1,94 @@
+// head {
+@__nodeId__: ~"ss__dialogsThemes_main";
+// }
+
+@{__nodeId__}[instance='@{__instance__}'] {
+
+    .ui-dialog {
+        transition: opacity 0.2s;
+        font-family: verdana, arial, sans-serif;
+
+        &:hover {
+
+        }
+
+        &.ui-dialog-dragging {
+            opacity: 0.8;
+        }
+
+        .ui-dialog-titlebar {
+            position: relative;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #404040;
+
+            .ui-dialog-title {
+                display: block;
+                float: none;
+                width: 100%;
+                margin: 0;
+                font-size: 13px;
+                padding: 10px 13px;
+                font-weight: bold;
+                color: #FFFFFF;
+            }
+        }
+
+        .button() {
+            color: rgba(136, 136, 136, 0.7);
+
+            &:hover {
+                background-color: #303030;
+                color: #C0C0C0;
+
+                .ui-icon {
+                    opacity: 1;
+                }
+            }
+
+            &:active {
+                background-color: #1C1C1C;
+            }
+        }
+
+        .ui-dialog-titlebar {
+            color: #EAEAEA;
+
+            > .buttons {
+
+                .button {
+                    .button;
+
+                    &.size_reset {
+
+                        .icon {
+                            font-size: 9px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .ui-dialog-content {
+            padding: 0;
+
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+
+            > div {
+                flex-grow: 1;
+            }
+        }
+
+        &.padding {
+
+            .ui-dialog-content {
+                padding: 10px;
+            }
+        }
+    }
+}

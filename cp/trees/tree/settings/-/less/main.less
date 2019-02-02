@@ -1,0 +1,36 @@
+// head {
+@import "../../../../../../../css/std/-/less/main.less";
+
+@__nodeId__: ~"ss_cp_trees_tree_settings__main";
+// }
+
+.@{__nodeId__} {
+
+    .buttons {
+        padding: 10px;
+
+        .toggle_editable_button {
+            .__button;
+
+            color: #FFFFFF;
+            .__border(#D8422D);
+            .__gradient(#FC4D34, #D8422D);
+
+            &.pressed {
+                color: #F4FFEA;
+                .__border(#62A855);
+                .__gradient(#6EBC5F, #62A855);
+            }
+
+            &:hover {
+                .__border(#D1402C);
+                .__gradient(#F54B33, #D1402C);
+
+                &.pressed {
+                    .__border(#5B9C4F);
+                    .__gradient(#69B35A, #5B9C4F);
+                }
+            }
+        }
+    }
+}

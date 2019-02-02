@@ -1,0 +1,62 @@
+// head {
+@__nodeId__: ~"ss_stockPhotoRequest_ui__queue";
+// }
+
+.@{__nodeId__} {
+
+    .requests {
+
+        .request {
+            display: flex;
+            align-items: center;
+
+            .names {
+                flex-grow: 1;
+
+                .articul {
+                    padding: 10px;
+                    color: #007DFF;
+                }
+
+                .name {
+                    padding: 0 10px;
+                }
+
+                .remote_name {
+                    padding: 5px 10px;
+                    font-size: 10px;
+                    color: #909090;
+                }
+            }
+
+            .camera_button {
+                position: relative;
+
+                display: flex;
+                align-items: center;
+                align-self: stretch;
+
+                padding: 0 20px;
+
+                .icon {
+                    font-size: 22px;
+                    color: #D0D0D0;
+                }
+            }
+
+            &.pending {
+
+                .articul {
+                    color: #FF0000;
+                }
+
+                .camera_button {
+
+                    .icon {
+                        color: #FF0000;
+                    }
+                }
+            }
+        }
+    }
+}

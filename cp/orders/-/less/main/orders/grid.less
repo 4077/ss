@@ -1,0 +1,77 @@
+// head {
+@__nodeId__: ~"ss_cp_orders__main_orders_grid";
+// }
+
+.@{__nodeId__} {
+
+    .__cell {
+        cursor: default;
+        padding: 10px;
+
+        &.hover {
+            background-color: #F5F5F5;
+        }
+    }
+
+    .__cell_without_control {
+
+        .cell_container {
+            padding: 10px;
+        }
+    }
+
+    .__txt_control {
+
+        input {
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) inset;
+        }
+    }
+
+    .cell {
+        background-color: #EEEEEE;
+
+        &.items {
+
+        }
+
+        &.id, &.time, &.organization, &.fio, &.phone, &.email, &.address, &.client_comment {
+            .__cell_without_control;
+        }
+
+        &.id {
+            color: #606060;
+        }
+
+        &.phone {
+            font-weight: bold;
+        }
+
+        &.actions {
+
+            .button {
+                cursor: pointer;
+                float: left;
+                width: 33px;
+                height: 33px;
+
+                .icon {
+                    margin: 8px;
+                    width: 16px;
+                    height: 16px;
+                    background-image: url('images/icons_454545.png');
+                }
+
+                &.delete {
+
+                    .icon {
+                        background-position: -176px -96px;
+                    }
+                }
+
+                &.hover {
+                    background-color: #FFFFFF;
+                }
+            }
+        }
+    }
+}

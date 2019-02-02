@@ -1,0 +1,199 @@
+// head {
+@__nodeId__: ~"ss_cats_cp_common_less__main_cp";
+// }
+
+.@{__nodeId__} {
+    @less_color: #51A8D0;
+    @less_dark_color: #215F9A;
+    @less_pale_color: #D4F2FC;
+
+    > .row_1 {
+        background-color: #404040;
+
+        display: flex;
+
+        .types {
+            flex-grow: 1;
+
+            display: flex;
+
+            .type {
+                cursor: pointer;
+                margin: 0;
+                padding: 5px 15px;
+                color: #BBBBBB;
+
+                display: flex;
+                align-items: center;
+
+                .icon {
+                    display: block;
+                    font-size: 9px;
+                    margin-right: 6px;
+                }
+
+                &.selected {
+                    background-color: @less_color;
+                    color: #FFFFFF;
+                }
+
+                &.hover {
+                    background-color: #808080;
+                    color: #FFFFFF;
+                }
+            }
+        }
+
+        .buttons {
+
+            .button() {
+                cursor: pointer;
+                float: left;
+                margin: 0;
+                padding: 5px 15px;
+                color: #BBBBBB;
+
+                &.hover {
+                    background-color: #808080;
+                    color: #FFFFFF;
+                }
+            }
+
+            .save_button {
+                .button;
+            }
+
+            .reset_button {
+                .button;
+
+                &.hover {
+                    background-color: #80333E;
+                    color: #FFEF87;
+                }
+            }
+        }
+    }
+
+    > .row_2 {
+        background-color: #202020;
+        padding: 10px;
+
+        .row_2_1 {
+            display: flex;
+            justify-content: space-between;
+
+            .mode_buttons {
+
+                .toggle_button {
+                    cursor: pointer;
+                    float: left;
+                    margin-left: -5px;
+                    padding: 2px 5px;
+                    color: #B94226;
+
+                    &.enabled {
+                        background-color: #004800;
+                        color: #7CFF7C;
+                    }
+
+                    &:hover {
+                        color: #808080;
+
+                        &.enabled {
+                            background-color: #003C00;
+                            color: #66CE66;
+                        }
+                    }
+                }
+
+                .rewrite_button {
+                    cursor: pointer;
+                    float: left;
+                    margin-left: 4px;
+                    padding: 2px 5px;
+                    background-color: #004388;
+                    color: #00B1FF;
+
+                    &.enabled {
+                        background-color: #610005;
+                        color: #FFA6A3;
+                    }
+
+                    &:hover {
+                        color: #0097D9;
+
+                        &.enabled {
+                            background-color: #6B0D00;
+                            color: #C56754;
+                        }
+                    }
+                }
+            }
+
+            .buttons {
+                display: flex;
+                align-items: center;
+
+                .button() {
+                    cursor: pointer;
+                    margin: 0;
+                    padding: 2px 5px;
+                    color: #9C9C9C;
+
+                    &.hover {
+                        background-color: #808080;
+                        color: #FFFFFF;
+                    }
+                }
+
+                .save_button {
+                    .button;
+                }
+
+                .reset_button {
+                    .button;
+
+                    &.hover {
+                        background-color: #80333E;
+                        color: #FFEF87;
+                    }
+                }
+
+                .update_css_button {
+                    cursor: pointer;
+                    margin-right: 5px;
+                    color: #444444;
+
+                    &:hover {
+                        color: #FF3419;
+                    }
+                }
+            }
+        }
+
+        .row_2_2 {
+            background-color: #202020;
+            display: flex;
+
+            .node_file {
+                display: block;
+                margin-top: 10px;
+                color: #606060;
+            }
+
+            .path {
+                display: block;
+                padding: 10px 10px 0;
+                color: #606060;
+                font-size: 13px;
+
+                &:hover {
+
+                    .icon {
+                        color: #CCCCCC;
+                    }
+                }
+            }
+        }
+    }
+}

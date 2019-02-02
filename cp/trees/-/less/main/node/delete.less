@@ -1,0 +1,72 @@
+.@{__nodeId__} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-bottom: 20px;
+
+    > .warning {
+        margin: 10px;
+        background-color: #F039FF;
+        color: #00ABFF;
+        font-size: 40px;
+        font-weight: bold;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #00FF86;
+
+        animation: klmn 2.3s ease-in-out infinite;;
+    }
+
+    > .label {
+        font-weight: bold;
+        margin: 10px 0;
+    }
+
+    > .row {
+        margin: 5px 0;
+        display: flex;
+        padding: 0 20px;
+
+        .label {
+            margin-right: 5px;
+        }
+
+        .value {
+            font-weight: bold;
+        }
+    }
+
+    .buttons {
+        margin-top: 20px;
+
+        display: flex;
+        justify-content: center;
+
+        .button {
+            .__button;
+
+            &.delete {
+                .red;
+            }
+
+            &.cancel {
+                .blue;
+            }
+        }
+    }
+}
+
+@keyframes klmn {
+
+    0% {
+        //opacity: 0.5;
+        color: #00ABFF;
+        background-color: #F039FF;
+    }
+
+    50% {
+        color: #F039FF;
+        background-color: #00ABFF;
+    }
+}

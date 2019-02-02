@@ -1,0 +1,190 @@
+// head {
+@import "../../../../../../../css/std/-/less/main.less";
+@import "../../../../../../../css/std/-/less/flex.less";
+
+@__nodeId__: ~"ss_cats_cp_container_common__main";
+// }
+
+.@{__nodeId__} {
+
+    .components_cps {
+        margin: 10px 0;
+    }
+
+    .component_cp {
+        margin: 10px;
+    }
+
+    //
+
+    > .short_name {
+        position: relative;
+
+        .txt {
+            font-size: 24px;
+            padding: 10px;
+        }
+
+        input {
+            box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3) inset;
+            background-color: #F0F0F0;
+        }
+    }
+
+    > .name {
+        position: relative;
+
+        .txt {
+            font-size: 14px;
+            padding: 5px 10px;
+        }
+
+        input {
+            box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3) inset;
+            background-color: #F0F0F0;
+        }
+    }
+
+    > .description {
+        position: relative;
+
+        .txt {
+            color: #808080;
+            padding: 5px 10px;
+        }
+
+        input {
+            box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3) inset;
+            background-color: #F0F0F0;
+        }
+    }
+
+    > .fields {
+        padding: 0 10px;
+
+        .field {
+
+            > .label {
+                padding: 5px 0;
+                font-size: 11px;
+                font-weight: bold;
+            }
+
+            > .control {
+
+                input {
+                    padding: 5px;
+                    border: 1px solid #E0E0E0;
+                    border-radius: 3px;
+                    width: 100%;
+                    box-sizing: border-box;
+
+                    transition: border-color 0.3s;
+
+                    &:focus {
+                        border-color: #A0A0A0;
+                    }
+
+                    &.updating {
+                        border-color: #F9132C;
+                    }
+
+                    &.saved {
+                        border-color: #6BB75F;
+                    }
+                }
+            }
+        }
+    }
+
+    > .enable_modes {
+        display: flex;
+        padding: 10px;
+
+        .button {
+            cursor: pointer;
+            padding: 7px 12px;
+            margin: 0 5px 0 0;
+            border-radius: 3px;
+
+            text-align: center;
+
+            box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.13);
+
+            &:active {
+                position: relative;
+                left: 1px;
+                top: 1px;
+
+                box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.13);
+            }
+
+            &.enabled {
+                width: 70px;
+                background-color: #A0A0A0;
+                color: #FFFFFF;
+
+                &:hover {
+                    background-color: #888888;
+                    color: #FEF9FF;
+                }
+
+                &.pressed {
+                    background-color: #0073C1;
+                    color: #C9FAFF;
+
+                    &:hover {
+                        background-color: #005EA3;
+                        color: #C6F0F4;
+                    }
+                }
+            }
+
+            &.published {
+                width: 110px;
+                background-color: #FF4444;
+                color: #FFFFFF;
+
+                &:hover {
+                    background-color: #E13B3B;
+                    color: #FFFFFF;
+                }
+
+                &.pressed {
+                    background-color: #0583B1;
+                    color: #BEF6FF;
+
+                    &:hover {
+                        background-color: #057BA6;
+                        color: #BEF6FF;
+                    }
+                }
+            }
+
+            &.output_enabled {
+                width: 170px;
+                background-color: #212121;
+                color: #DADADA;
+
+                &:hover {
+                    background-color: #353535;
+                    color: #DADADA;
+                }
+
+                &.pressed {
+                    background-color: #2A91B7;
+                    color: #DCF7FF;
+
+                    &:hover {
+                        background-color: #2785A8;
+                        color: #DCF7FF;
+                    }
+                }
+            }
+        }
+    }
+
+    > .components {
+        padding: 10px;
+    }
+}

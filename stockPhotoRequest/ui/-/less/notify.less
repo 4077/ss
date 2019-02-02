@@ -1,0 +1,58 @@
+.@{__nodeId__} {
+
+    .user {
+        display: flex;
+        padding: 5px;
+
+        .info {
+            flex-grow: 1;
+
+            .login {
+                font-weight: bold;
+                margin-right: 5px;
+            }
+
+            .not_viewed_count {
+                margin: 5px 0;
+                color: #909090;
+                font-size: 11px;
+            }
+
+            .not_notified_count {
+                margin: 5px 0;
+                color: #909090;
+                font-size: 11px;
+            }
+        }
+
+        .send_button {
+            cursor: pointer;
+
+            .__button;
+            .small;
+            .purple;
+
+            &.repeat {
+                .red;
+            }
+
+            margin: 0;
+
+            display: flex;
+            align-items: center;
+
+            .icon {
+                font-size: 14px;
+                margin-right: 5px;
+                color: #606060;
+            }
+
+            &:hover {
+
+                .icon {
+                    color: #FFFFFF;
+                }
+            }
+        }
+    }
+}

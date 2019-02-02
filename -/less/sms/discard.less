@@ -1,0 +1,38 @@
+// head {
+@__nodeId__: ~"ss__sms_discard";
+// }
+
+body {
+    background: #000000;
+}
+
+.@{__nodeId__} {
+
+    .message {
+        float: left;
+        text-align: center;
+        font-size: 25px;
+        padding: 7px 15px;
+        margin-top: 20vh;
+
+        &.discarded {
+            background-color: #195a71;
+            color: #88c7da;
+        }
+
+        &.already_sent {
+            background-color: #5A2F5B;
+            color: #DA9DB3;
+        }
+
+        &.already_discarded {
+            background-color: #5B6671;
+            color: #C1D0DA;
+        }
+
+        &.wrong_code {
+            color: #f70000;
+            background-color: #5a0000;
+        }
+    }
+}

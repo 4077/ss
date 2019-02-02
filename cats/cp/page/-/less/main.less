@@ -1,0 +1,49 @@
+// head {
+@__nodeId__: ~"ss_cats_cp_page__main";
+// }
+
+.@{__nodeId__} {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    font-size: 13px;
+
+    > .tabs {
+        display: flex;
+        flex-shrink: 0;
+        background: linear-gradient(#e8e8e8, #dcdcdc);
+
+        .tab {
+            cursor: pointer;
+            padding: 10px 15px;
+            color: #383838;
+
+            &.selected {
+                cursor: default;
+                background-color: #FFFFFF;
+                color: #000;
+            }
+
+            &:hover {
+                background: linear-gradient(#FDFDFD, #F0F0F0);
+
+                &.selected {
+                    background: #FFFFFF;
+                }
+            }
+        }
+    }
+
+    > .content {
+        flex-grow: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        &.padding {
+            padding: 10px;
+        }
+    }
+}

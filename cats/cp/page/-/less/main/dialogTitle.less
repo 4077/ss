@@ -1,0 +1,35 @@
+// head {
+@__nodeId__: ~"ss_cats_cp_page__main_dialogTitle";
+// }
+
+.@{__nodeId__} {
+    display: flex;
+
+    .icon {
+        margin-right: 6px;
+        color: #5BADDE;
+        font-size: 13px;
+
+        &.fa-folder {
+            color: #F1B457;
+        }
+
+        &.fa-file {
+            color: #5BADDE;
+        }
+    }
+
+    &.not_published {
+
+        .icon {
+            color: #FF5A5A;
+        }
+    }
+
+    &.disabled {
+
+        .icon {
+            color: #909090;
+        }
+    }
+}

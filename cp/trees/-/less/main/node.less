@@ -1,0 +1,155 @@
+// head {
+@import "../../../../../../js-jquery/ui/-/less/icons.less";
+
+@__nodeId__: ~"ss_cp_trees__main_node";
+// }
+
+.@{__nodeId__} {
+    @buttonSize: 28px;
+
+    > .content {
+        cursor: pointer;
+        position: relative;
+        min-width: 250px;
+        min-height: @buttonSize;
+
+        display: flex;
+        align-items: center;
+
+        .mode_icon {
+            font-size: 14px;
+            margin-left: 5px;
+
+            &.fa-folder {
+                color: #F1B457;
+            }
+
+            &.fa-file {
+                color: #5BADDE;
+            }
+        }
+
+        .name {
+
+            .txt {
+                padding: 7px 10px;
+            }
+        }
+
+        input {
+            position: relative;
+            z-index: 3;
+            background-color: #F5F5F5;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3) inset;
+        }
+
+        .buttons {
+            display: none;
+            position: absolute;
+            right: 0;
+            z-index: 2;
+
+            .button {
+                position: relative;
+                cursor: pointer;
+                float: left;
+                width: @buttonSize;
+                height: @buttonSize;
+                background-color: #F3F3F3;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .icon {
+                    font-size: 14px;
+                }
+
+                &.hover {
+                    background-color: #E0E0E0;
+                }
+
+                &.rename {
+                    color: #404040;
+                }
+
+                &.create {
+
+                    .icon {
+
+                        .main {
+                            font-size: 14px;
+                        }
+
+                        .plus {
+                            position: absolute;
+                            font-size: 6px;
+                            top: 5px;
+                            right: 3px;
+                        }
+
+                        .fa-folder {
+                            color: #F1B457;
+                        }
+
+                        .fa-file {
+                            color: #5BADDE;
+                        }
+
+                        .fa-cube {
+                            color: #327FAD;
+                        }
+                    }
+                }
+
+                &.duplicate {
+
+                    .icon {
+                        .ui-icon-copy;
+                    }
+                }
+
+                &.delete {
+
+                    .icon {
+                        .ui-icon-trash;
+                    }
+                }
+            }
+        }
+
+        &.root {
+            cursor: default;
+            background-color: #404040;
+            color: #FFFFFF;
+
+            .button {
+                background-color: #404040;
+
+                .icon {
+                    background: url("../images/icons_ffffff.png");
+                }
+
+                &.hover {
+                    background-color: #5D5D5D;
+                }
+            }
+        }
+
+        &.disabled {
+            color: #A0A0A0;
+        }
+
+        &.hover {
+            background-color: #F3F3F3;
+
+            &.root {
+                background-color: #404040;
+            }
+
+            .buttons {
+                display: block;
+            }
+        }
+    }
+}

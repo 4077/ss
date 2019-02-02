@@ -1,0 +1,59 @@
+// head {
+@__nodeId__: ~"ss_cp_trees_tree_own_users__main_usersList";
+// }
+
+.@{__nodeId__} {
+
+    .users {
+
+        .user {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #EFEFEF;
+            border-top: 1px solid #F9F9F9;
+            border-bottom: 1px solid #E6E6E6;
+
+            &.hover {
+                background-color: #E2E2E2;
+            }
+
+            &.selected {
+                background-color: #e86a6a;
+                border-top: 1px solid #cc5f5f;
+                border-bottom: 1px solid #f54444;
+                color: #FFFFFF;
+            }
+        }
+    }
+
+    .paginator {
+        padding: 10px;
+
+        .page_button {
+            cursor: pointer;
+            float: left;
+            margin: 2px;
+            padding: 5px 8px;
+            background-color: #FFFFFF;
+            color: #404040;
+            border-radius: 3px;
+
+            &.selected {
+                background-color: #e86a6a;
+                color: #F0F0F0;
+            }
+
+            &.hover {
+                background-color: #A0A0A0;
+                color: #FFFFFF;
+            }
+        }
+
+        .skipped_pages_button {
+            float: left;
+            margin: 2px;
+            padding: 5px 0;
+            color: #404040;
+        }
+    }
+}

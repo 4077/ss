@@ -1,0 +1,71 @@
+// head {
+@import "../../../../../css/std/-/less/main.less";
+
+@__nodeId__: ~"ss_moderation_ui__main";
+// }
+
+.@{__nodeId__} {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .tile {
+        padding: 20px;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .button {
+            display: flex;
+            width: 130px;
+            .__button;
+
+            margin: 5px;
+
+            .icon {
+                margin-right: 10px;
+            }
+
+            &.confirm {
+                .green;
+
+                .icon {
+                    color: #22B100;
+                }
+            }
+
+            &.temporary {
+                .purple;
+
+                .icon {
+                    color: #FF0097;
+                }
+            }
+
+            &.discard {
+                .red;
+
+                .icon {
+                    color: #FF0000;
+                }
+            }
+
+            &:hover {
+
+                .icon {
+                    color: #FFFFFF;
+                }
+            }
+        }
+    }
+
+    .nothing {
+        font-size: 21px;
+        color: #909090;
+    }
+}

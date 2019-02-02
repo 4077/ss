@@ -1,0 +1,129 @@
+// head {
+@__nodeId__: ~"ss_cats_cp_page_common__main";
+// }
+
+.@{__nodeId__} {
+    display: flex;
+    flex-direction: column;
+
+    > .enable_modes {
+        display: flex;
+        flex-shrink: 0;
+        padding: 10px;
+
+        .button {
+            cursor: pointer;
+            padding: 7px 12px;
+            margin: 0 5px 0 0;
+            border-radius: 3px;
+
+            text-align: center;
+
+            box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.13);
+
+            &:active {
+                position: relative;
+                left: 1px;
+                top: 1px;
+
+                box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.13);
+            }
+
+            &.enabled {
+                width: 80px;
+                background-color: #A0A0A0;
+                color: #FFFFFF;
+
+                &:hover {
+                    background-color: #888888;
+                    color: #FEF9FF;
+                }
+
+                &.pressed {
+                    background-color: #0073C1;
+                    color: #C9FAFF;
+
+                    &:hover {
+                        background-color: #005EA3;
+                        color: #C6F0F4;
+                    }
+                }
+            }
+
+            &.published {
+                width: 120px;
+                background-color: #FF4444;
+                color: #FFFFFF;
+
+                &:hover {
+                    background-color: #E13B3B;
+                    color: #FFFFFF;
+                }
+
+                &.pressed {
+                    background-color: #0583B1;
+                    color: #BEF6FF;
+
+                    &:hover {
+                        background-color: #057BA6;
+                        color: #BEF6FF;
+                    }
+                }
+            }
+        }
+    }
+
+    > .fields {
+        padding: 0 10px;
+        flex-shrink: 0;
+
+        .field {
+            padding: 2px 0;
+
+            > .label {
+                padding: 5px 0;
+                font-size: 11px;
+                font-weight: bold;
+            }
+
+            > .control {
+
+                input {
+                    padding: 5px;
+                    border: 1px solid #E0E0E0;
+                    border-radius: 3px;
+                    width: 100%;
+                    box-sizing: border-box;
+
+                    transition: border-color 0.3s;
+
+                    &:focus {
+                        border-color: #A0A0A0;
+                    }
+
+                    &.updating {
+                        border-color: #F9132C;
+                    }
+
+                    &.saved {
+                        border-color: #6BB75F;
+                    }
+                }
+            }
+
+            .route_cache {
+
+                a {
+                    font-size: 11px;
+                    color: #0096F1;
+                    margin: 5px 2px;
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}

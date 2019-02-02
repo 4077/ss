@@ -1,0 +1,60 @@
+// head {
+@__nodeId__: ~"ss_cats_cp_product__divisionsData";
+// }
+
+.@{__nodeId__} {
+    padding: 10px;
+
+    .divisions {
+
+        .division {
+            margin: 0 0 5px 0;
+            background-color: #fafafa;
+            border-radius: 5px;
+            border: 1px solid #dcdcdc;
+
+            > .name {
+                padding: 7px 12px;
+                border-radius: 3px 3px 0 0;
+                background-color: #525252;
+                color: #fff;
+            }
+
+            > .price {
+                cursor: pointer;
+                color: #FF0000;
+                padding: 10px;
+                font-weight: bold;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            .warehouses {
+                padding-bottom: 5px;
+
+                .warehouse {
+                    margin: 5px 0;
+
+                    display: flex;
+                    padding-left: 20px;
+
+                    > .name {
+                        font-weight: bold;
+                    }
+
+                    > .stock {
+                        cursor: pointer;
+                        margin-left: 10px;
+                        color: #0000FF;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,131 @@
+// head {
+@__nodeId__: ~"ss_cp_trees_tree_plugins__main";
+// }
+
+.@{__nodeId__} {
+    .h100() {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        flex-grow: 1;
+    }
+
+    height: 100%;
+
+    display: flex;
+
+    .plugins {
+
+        .plugin {
+            cursor: pointer;
+            position: relative;
+
+            display: flex;
+
+            border: 1px solid transparent;
+
+            .name {
+                padding: 10px 20px 10px 10px;
+                color: #909090;
+            }
+
+            .button() {
+                cursor: pointer;
+                padding: 10px;
+                color: #B0B0B0;
+
+                .icon {
+                    font-size: 14px;
+                    line-height: 13px;
+                }
+
+                &:hover {
+                    background-color: #FFFFFF;
+                    color: #000;
+                }
+
+                &:active {
+                    position: relative;
+                    left: 1px;
+                    top: 1px;
+                }
+            }
+
+            .buttons {
+                display: flex;
+                z-index: 2;
+
+                .button {
+                    .button;
+
+                    &.toggle {
+
+                        .icon {
+                            color: #FF0000;
+                        }
+
+                        &:hover {
+
+                            .icon {
+                                color: #EA4949;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.enabled {
+
+                .name {
+                    color: #000;
+                }
+
+                .button {
+
+                    .icon {
+                        color: #000;
+                    }
+
+                    &.toggle {
+
+                        .icon {
+                            color: #17A000;
+                        }
+                    }
+
+                    &:hover {
+
+                        .icon {
+                            color: #5C5C5C;
+                        }
+
+                        &.toggle {
+
+                            .icon {
+                                color: #6AB967;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.selected {
+                cursor: default;
+                background-color: #F0F0F0;
+
+                .name {
+                    font-weight: bold;
+                }
+            }
+
+            &:hover {
+                background-color: #F0F0F0;
+            }
+        }
+    }
+
+    .cp {
+        border-left: 1px solid #E4E4E4;
+        padding: 10px 15px;
+    }
+}

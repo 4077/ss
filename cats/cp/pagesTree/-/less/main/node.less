@@ -1,0 +1,98 @@
+// head {
+@import "../../../../../../../jquery/ui/-/less/icons.less";
+
+@__nodeId__: ~"ss_cats_cp_pagesTree__main_node";
+// }
+
+.@{__nodeId__} {
+    @buttonSize: 28px;
+
+    cursor: pointer;
+    position: relative;
+    min-width: 250px;
+    min-height: @buttonSize;
+
+    .name {
+        padding: 7px 10px;
+    }
+
+    .locked_icon {
+        display: none;
+        margin-left: 5px;
+        color: #CCC;
+    }
+
+    .buttons {
+        display: none;
+        position: absolute;
+        right: 0;
+
+        .button {
+            cursor: pointer;
+            float: left;
+            width: @buttonSize;
+            height: @buttonSize;
+            background-color: #F3F3F3;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .icon {
+                font-size: 12px;
+            }
+
+            &.hover {
+                background-color: #E0E0E0;
+            }
+        }
+    }
+
+    &.root {
+        background-color: #585858;
+        color: #FFFFFF;
+
+        .button {
+            background-color: #303030;
+
+            .icon {
+                //background: url("../images/icons_ffffff.png");
+            }
+
+            &:hover {
+                background-color: #505050;
+            }
+        }
+    }
+
+    &.selected {
+        background-color: #E8E8E8;
+    }
+
+    &.not_published {
+        color: #FF6868;
+    }
+
+    &.disabled {
+        color: #B4B4B4;
+    }
+
+    &.locked {
+
+        .locked_icon {
+            display: inline;
+        }
+    }
+
+    &:hover {
+        background-color: #F3F3F3;
+
+        &.root {
+            background-color: #303030;
+        }
+
+        .buttons {
+            display: block;
+        }
+    }
+}

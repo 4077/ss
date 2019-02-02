@@ -1,0 +1,361 @@
+// head {
+@__nodeId__: ~"ss_moderation_commander_panel__main";
+// }
+
+.@{__nodeId__} {
+    .h100() {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        flex-grow: 1;
+    }
+
+    .h100;
+
+    .a {
+        padding: 3px;
+        min-height: 27px;
+
+        display: flex;
+
+        background: linear-gradient(#F5F5F5, #EFEFEF);
+        border-top: 1px solid #D5D5D5;
+        border-bottom: 1px solid #C0C0C0;
+
+        > .status_filter {
+            display: flex;
+            flex-grow: 1;
+
+            .button {
+                cursor: pointer;
+
+                display: flex;
+                align-items: center;
+                padding: 0 5px;
+
+                .label {
+                    color: #C6C6C6;
+                }
+
+                .icon {
+                    width: 16px;
+                    text-align: center;
+                    color: #C6C6C6;
+                    padding: 3px;
+                    font-size: 14px;
+                }
+
+                &.enabled {
+
+                    .label {
+                        color: #404040;
+                    }
+
+                    &.initial {
+
+                        .icon {
+                            color: #404040;
+                        }
+                    }
+
+                    &.moderation {
+
+                        .icon {
+                            color: #0092FD;
+                        }
+                    }
+
+                    &.temporary {
+
+                        .icon {
+                            color: #FF0097;
+                        }
+                    }
+
+                    &.discarded {
+
+                        .icon {
+                            color: #FF0000;
+                        }
+                    }
+
+                    &.scheduled {
+
+                        .icon {
+                            color: #22B100;
+                        }
+                    }
+                }
+            }
+        }
+
+        > .paginator {
+
+            .page_button {
+                cursor: pointer;
+                float: left;
+                margin: 2px;
+                padding: 5px 8px;
+                background-color: #D8D8D8;
+                color: #000000;
+                border-radius: 3px;
+
+                &.selected {
+                    background-color: #606060;
+                    color: #F0F0F0;
+                }
+
+                &.hover {
+                    background-color: #A0A0A0;
+                    color: #FFFFFF;
+                }
+            }
+
+            .skipped_pages_button {
+                float: left;
+                margin: 2px;
+                padding: 5px 10px;
+                color: #404040;
+            }
+        }
+    }
+
+    .b {
+        position: relative;
+        overflow: auto;
+
+        flex-grow: 1;
+
+        background-color: #F5F5F5;
+
+        > table {
+            width: 100%;
+            border-collapse: collapse;
+
+            td {
+                border: 1px solid #B9B9B9;
+            }
+
+            tr:first-child td {
+                border-top: 0;
+            }
+
+            table tr td:first-child {
+                border-left: 0;
+            }
+
+            tr > td > table {
+                width: 100%;
+                border-collapse: collapse;
+
+                tr:last-child td {
+                    border-bottom: 0;
+                }
+
+                tr td:last-child {
+                    border-right: 0;
+                }
+            }
+        }
+
+        .row {
+            background-color: #DBDBDB;
+
+            &.product {
+                cursor: default;
+
+                .icon {
+                    width: 16px;
+                    text-align: center;
+
+                    div {
+                        color: #C6C6C6;
+                        padding: 3px;
+                        font-size: 14px;
+                    }
+
+                    &.moderation {
+
+                        div {
+                            color: #0092FD;
+                        }
+                    }
+
+                    &.temporary {
+
+                        div {
+                            color: #FF0097;
+                        }
+                    }
+
+                    &.discarded {
+
+                        div {
+                            color: #FF0000;
+                        }
+                    }
+
+                    &.scheduled {
+
+                        div {
+                            color: #22B100;
+                        }
+                    }
+                }
+
+                .date {
+                    padding: 5px 5px;
+                    font-size: 11px;
+                    white-space: nowrap;
+                }
+
+                .name {
+                    padding: 4px 5px;
+                    color: #303030;
+                }
+
+                .status {
+                    padding: 5px 5px;
+                    font-size: 11px;
+                    text-align: center;
+                    white-space: nowrap;
+
+                    &.created {
+                        color: #00A506;
+                    }
+
+                    &.updated {
+                        color: #007FEF;
+                    }
+                }
+
+                &.installed {
+
+                    .name {
+                        color: #00BD19;
+                    }
+                }
+            }
+
+            &.focus {
+                background-color: #F1EECC;
+
+                &.cat .icon > div {
+                    //color: #444444;
+                }
+
+                .name {
+                    color: #2B2B2B;
+                }
+
+                .price {
+                    color: #2C2C2C;
+                }
+
+                &.installed {
+                    background-color: #CDF1D0;
+                }
+            }
+
+            &.selected {
+
+                &.cat .icon > div {
+                    color: #FFFFFF;
+                }
+
+                .name {
+                    color: #F0F0F0;
+                }
+
+                .price {
+                    color: #FFFFFF;
+                }
+
+                &.installed {
+                    background-color: #298ADA;
+
+                    .name {
+                        color: #BCFFE1;
+                    }
+                }
+            }
+        }
+    }
+
+    &.focus {
+
+        .a {
+            background: linear-gradient(#424242, #404040);
+            border-top: 1px solid #484848;
+
+            > .status_filter > .button.enabled {
+
+                .label {
+                    color: #FFFFFF;
+                }
+
+                &.initial {
+
+                    .icon {
+                        color: #EDFB30;
+                    }
+                }
+
+                &.moderation {
+
+                    .icon {
+                        color: #60BCFF;
+                    }
+                }
+
+                &.temporary {
+
+                    .icon {
+                        color: #FF9BD6;
+                    }
+                }
+
+                &.discarded {
+
+                    .icon {
+                        color: #FF6868;
+                    }
+                }
+
+                &.scheduled {
+
+                    .icon {
+                        color: #4CA737;
+                    }
+                }
+            }
+        }
+
+        .b {
+
+            .row {
+                background-color: #FFFFFF;
+
+                &.not_published {
+                    background-color: #FFD5C9;
+                }
+
+                &.disabled {
+                    background-color: #E0E0E0;
+                }
+
+                &.focus {
+                    background-color: #FDF8C1;
+
+                    &.not_published {
+                        background-color: #FFBBA8;
+                    }
+
+                    &.disabled {
+                        background-color: #CACACA;
+                    }
+                }
+            }
+        }
+    }
+}

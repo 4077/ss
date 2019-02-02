@@ -1,0 +1,130 @@
+// head {
+@__nodeId__: ~"ss_suppliers_ui_messages__main";
+// }
+
+.@{__nodeId__} {
+    width: 100%;
+
+    table.messages {
+        width: 100%;
+        background-color: #E0E0E0;
+        border-spacing: 1px;
+
+        tr.message {
+
+            .cell() {
+                background-color: #FFF;
+                padding: 5px;
+            }
+
+            > td.datetime {
+                .cell;
+                color: #545360;
+                white-space: nowrap;
+            }
+
+            > td.info {
+                .cell;
+
+                .from {
+                    font-weight: bold;
+                }
+
+                .subject {
+                    margin-top: 5px;
+                    color: #606060;
+                }
+            }
+
+            > td.attachments {
+                .cell;
+
+                > table {
+                    border-spacing: 1px;
+
+                    tr.attachment {
+
+                        a {
+                            display: block;
+                            padding: 4px;
+                            color: #47566D;
+                            text-decoration: none;
+                            white-space: nowrap;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+
+                        .importer {
+                            position: relative;
+                            border-radius: 2px;
+
+                            &.pending {
+                                color: #909090;
+                            }
+
+                            &.detected {
+                                background-color: #C5ECB8;
+                                color: #066324;
+                            }
+
+                            &.not_detected {
+                                background-color: #FFE1E1;
+                                color: #7D1212;
+                            }
+
+                            .name {
+                                position: relative;
+                                padding: 4px;
+                                z-index: 2;
+
+                                white-space: nowrap;
+                            }
+
+                            .progress_bar {
+                                display: none;
+                                position: absolute;
+                                z-index: 1;
+                                border-radius: 2px;
+                                left: 0;
+                                top: 0;
+                                height: 100%;
+                                width: 80%;
+                                background-color: #1A7DD0;
+                                color: #FFFFFF;
+                                opacity: 0.5;
+
+                                transition: width 0.5s linear;
+
+                                &.no_transition {
+                                    transition: none !important;
+                                }
+                            }
+                        }
+
+                        &.importing {
+
+                            .importer {
+                                background-color: #54ADEC;
+                                color: #FFFFFF;
+
+                                .progress_bar {
+                                    display: block;
+                                }
+                            }
+                        }
+
+                        &.imported {
+
+                            .importer {
+                                background-color: #B9E9FF;
+                                color: #0F3C63;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

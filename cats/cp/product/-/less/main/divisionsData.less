@@ -1,0 +1,82 @@
+// head {
+@__nodeId__: ~"ss_cats_cp_product__main_divisionsData";
+// }
+
+.@{__nodeId__} {
+
+    .divisions {
+
+        .division {
+            margin-top: 10px;
+
+            .info {
+                display: flex;
+                justify-content: space-between;
+
+                padding: 7px 9px;
+
+                background-color: #404040;
+
+                .name {
+                    font-size: 13px;
+                    color: #FFFFFF;
+                    //font-weight: bold;
+                }
+
+                .price {
+                    cursor: pointer;
+                    padding-left: 15px;
+                    white-space: nowrap;
+                    font-size: 13px;
+                    color: #FFFC74;
+                    //font-weight: bold;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            .warehouses {
+                background-color: #D2D2D2;
+
+                table {
+                    width: 100%;
+                    border-spacing: 1px;
+
+                    td {
+                        background-color: #FFFFFF;
+                        padding: 5px;
+
+                        &.header {
+                            font-weight: bold;
+                            font-size: 11px;
+                            white-space: nowrap;
+                        }
+
+                        &.total_header {
+                            text-align: right;
+                            font-weight: bold;
+                        }
+
+                        &.total {
+                            font-weight: bold;
+
+                            &.stock {
+                                color: #189DFF;
+                            }
+
+                            &.reserved {
+                                color: #DA0000;
+                            }
+
+                            &.available {
+                                color: #00AF00;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

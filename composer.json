@@ -1,0 +1,15 @@
+{
+    "name": "fed/ss",
+    "type": "ewma-module",
+    "description": "ss",
+    "authors": [
+        {
+            "name": "fed",
+            "email": "ewmafw@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+
+    }
+}

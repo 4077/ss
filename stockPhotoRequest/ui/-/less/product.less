@@ -1,0 +1,149 @@
+// head {
+@import "../../../../../css/std/-/less/main.less";
+
+@__nodeId__: ~"ss_stockPhotoRequest_ui__product";
+// }
+
+.@{__nodeId__} {
+    padding: 10px 0;
+
+    > .request {
+        display: flex;
+        flex-direction: column;
+
+        .cp {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+
+            > .icon {
+                margin-right: 5px;
+                font-size: 14px;
+
+                &.done {
+                    color: #0092FD;
+                }
+
+                &.pending {
+                    color: #FF0000;
+                }
+            }
+
+            > .label {
+                margin-right: 5px;
+                white-space: nowrap;
+            }
+
+            > .user_select {
+
+                select {
+                    padding: 3px;
+                    border-radius: 3px;
+                    border: 1px solid #D0D0D0;
+                }
+            }
+
+            > .cancel_button {
+                cursor: pointer;
+                padding: 5px 10px;
+                color: #B0B0B0;
+
+                &:hover {
+                    color: #FF0021;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .images {
+            display: flex;
+            flex-wrap: wrap;
+
+            .image {
+                position: relative;
+                margin: 5px;
+
+                .buttons {
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                    box-sizing: border-box;
+                    padding: 7px;
+
+                    display: flex;
+                    justify-content: space-between;
+
+                    .decision_button {
+                        cursor: pointer;
+
+                        width: 30px;
+                        height: 30px;
+
+                        margin: 5px;
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        border-radius: 30px;
+                        background-color: rgba(0, 0, 0, 0.45);
+
+                        transition: background-color 0.2s;
+
+                        .icon {
+                            font-size: 20px;
+                            color: rgba(255, 255, 255, 0.5);
+
+                            transition: color 0.2s;
+                        }
+
+                        &:hover {
+
+                            &.accept {
+                                background-color: rgba(0, 128, 0, 0.45);
+
+                                .icon {
+                                    color: rgba(0, 255, 0, 0.5);
+                                }
+                            }
+
+                            &.discard {
+                                background-color: rgba(43, 0, 0, 0.45);
+
+                                .icon {
+                                    color: rgba(255, 0, 0, 0.94);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    > .create_panel {
+        display: flex;
+        align-items: center;
+
+        > .label {
+            margin-right: 5px;
+        }
+
+        .create_button {
+            .__button;
+            .small;
+            .blue;
+
+            white-space: nowrap;
+        }
+
+        > .user_select {
+
+            select {
+                padding: 3px;
+                border-radius: 3px;
+                border: 1px solid #D0D0D0;
+            }
+        }
+    }
+}

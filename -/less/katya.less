@@ -1,0 +1,90 @@
+// head {
+@__nodeId__: ~"ss__katya";
+// }
+
+.@{__nodeId__} {
+    width: 100vw;
+    height: 100vh;
+    background-color: #FFFFAA;
+
+    display: flex;
+    flex-direction: column;
+
+    > .header {
+        background-color: #FFFFFF;
+        height: 100px;
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+
+        .logo {
+            background: url("images/logo-katya.png");
+            width: 80px;
+            height: 75px;
+            margin: 0 20px;
+        }
+
+        .header {
+            flex-grow: 1;
+
+            .label {
+                font-size: 25px;
+                font-weight: bold;
+                color: #015b7e;
+            }
+
+            .desc {
+                font-style: italic;
+                color: #015b7e;
+            }
+        }
+
+        .phone {
+            margin: 0 50px;
+            font-size: 30px;
+        }
+    }
+
+    > .middle {
+        flex-grow: 1;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .grid {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            .cell {
+                margin: 10px;
+                width: 100px;
+                height: 100px;
+                background-color: #A2E232;
+
+                &.x {
+                    background-color: #000000;
+                }
+
+                &:hover {
+                    background-color: #698bff;
+                    border-radius: 100px;
+
+                    transform: rotate(-180deg);
+
+                }
+
+                transition: all 5s;
+            }
+        }
+    }
+
+    > .footer {
+        background-color: #FF44AA;
+        height: 200px;
+        flex-shrink: 0;
+    }
+}

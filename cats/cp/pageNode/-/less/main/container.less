@@ -1,0 +1,117 @@
+// head {
+@__nodeId__: ~"ss_cats_cp_pageNode__main_container";
+// }
+
+.@{__nodeId__} {
+    cursor: pointer;
+    display: flex;
+    position: relative;
+
+    .button() {
+        cursor: pointer;
+
+        .icon {
+            padding: 10px;
+            font-size: 14px;
+            width: 14px;
+        }
+
+        &:hover {
+            color: #000;
+        }
+    }
+
+    .scroller {
+        .button;
+
+        color: #327FAD;
+
+        &:hover {
+            color: #2B6D95;
+        }
+    }
+
+    &.output_disabled {
+
+        .scroller {
+
+            .icon {
+                color: #000000;
+            }
+        }
+    }
+
+    &.not_published {
+
+        .scroller {
+
+            .icon {
+                color: #FF5A5A;
+            }
+        }
+    }
+
+    &.disabled {
+
+        .scroller {
+
+            .icon {
+                color: #909090;
+            }
+        }
+    }
+
+    .reload_button {
+        .button;
+
+        color: #E0E0E0;
+    }
+
+    .toggle_source_cat_button {
+        .button;
+
+        color: #E0E0E0;
+        width: 34px;
+        text-align: center;
+    }
+
+    .name {
+        padding: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .buttons {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: none;
+        z-index: 2;
+        background-color: #F0F0F0;
+
+        .button {
+            cursor: pointer;
+            padding: 10px;
+            color: #909090;
+
+            .icon {
+                font-size: 14px;
+                line-height: 13px;
+            }
+
+            &:hover {
+                background-color: #F0F0F0;
+                color: #000;
+            }
+        }
+    }
+
+    &:hover {
+        background-color: #F0F0F0;
+
+        .buttons {
+            display: flex;
+        }
+    }
+}

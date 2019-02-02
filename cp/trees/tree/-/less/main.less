@@ -1,0 +1,53 @@
+// head {
+@__nodeId__: ~"ss_cp_trees_tree__main";
+// }
+
+.@{__nodeId__} {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+
+    > .tabs {
+        display: flex;
+        flex-shrink: 0;
+        background: linear-gradient(#404040, #404040);
+
+        .tab {
+            cursor: pointer;
+            padding: 8px 12px;
+            color: #FFFFFF;
+
+            &.selected {
+                cursor: default;
+                background-color: #FFFFFF;
+                color: #000;
+            }
+
+            &:hover {
+                text-decoration: underline;
+
+                &.selected {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    > .content {
+        flex-grow: 1;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        //padding: 10px;
+        overflow: auto;
+
+        &.padding {
+
+        }
+    }
+}

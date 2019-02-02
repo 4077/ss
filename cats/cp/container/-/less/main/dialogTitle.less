@@ -1,0 +1,27 @@
+// head {
+@__nodeId__: ~"ss_cats_cp_container__main_dialogTitle";
+// }
+
+.@{__nodeId__} {
+    display: flex;
+
+    .icon {
+        margin-right: 6px;
+        color: #45B9FF;
+        font-size: 13px;
+    }
+
+    &.not_published {
+
+        .icon {
+            color: #ff5a5a;
+        }
+    }
+
+    &.disabled {
+
+        .icon {
+            color: #909090;
+        }
+    }
+}

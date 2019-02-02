@@ -1,0 +1,195 @@
+// head {
+@import "../../../../../../../css/std/-/less/main.less";
+
+@__nodeId__: ~"ss_cats_cp_common_components__main";
+// }
+
+.@{__nodeId__} {
+
+    > .components {
+
+        .component {
+            cursor: pointer;
+            position: relative;
+
+            display: flex;
+
+            border-radius: 3px;
+            border: 1px solid transparent;
+
+            .name {
+                padding: 10px;
+                color: #909090;
+            }
+
+            .button() {
+                cursor: pointer;
+                padding: 10px;
+                color: #B0B0B0;
+
+                .icon {
+                    font-size: 14px;
+                    line-height: 13px;
+                }
+
+                &:hover {
+                    background-color: #FFFFFF;
+                    color: #000;
+                }
+
+                &:active {
+                    position: relative;
+                    left: 1px;
+                    top: 1px;
+                }
+            }
+
+            .hover_buttons {
+                position: absolute;
+                right: 0;
+                top: 0;
+                display: none;
+
+                .button {
+                    .button;
+                }
+            }
+
+            &:hover {
+                background-color: #F7F7F7;
+                border: 1px solid #E7E7E7;
+
+                .hover_buttons {
+                    display: flex;
+                }
+            }
+
+            .buttons {
+                display: flex;
+                z-index: 2;
+
+                .button {
+                    .button;
+
+                    &.toggle {
+
+                        .icon {
+                            color: #FF0000;
+                        }
+
+                        &:hover {
+
+                            .icon {
+                                color: #EA4949;
+                            }
+                        }
+                    }
+
+                    &.toggle_pinned {
+
+                        .icon {
+                            color: #ACACAC;
+                        }
+
+                        &:hover {
+
+                            .icon {
+                                color: #2E2E2E;
+                            }
+                        }
+
+                        &.pressed {
+
+                            .icon {
+                                color: #ACACAC;
+                            }
+
+                            &:hover {
+
+                                .icon {
+                                    color: #2E2E2E;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.enabled {
+
+                .name {
+                    color: #000;
+                }
+
+                .button {
+
+                    .icon {
+                        color: #000;
+                    }
+
+                    &.toggle {
+
+                        .icon {
+                            color: #17A000;
+                        }
+                    }
+
+                    &.toggle_pinned {
+
+                        .icon {
+                            color: #ACACAC;
+                        }
+
+                        &:hover {
+
+                            .icon {
+                                color: #2E2E2E;
+                            }
+                        }
+
+                        &.pressed {
+
+                            .icon {
+                                color: #FF6500;
+                            }
+
+                            &:hover {
+
+                                .icon {
+                                    color: #FF944F;
+                                }
+                            }
+                        }
+                    }
+
+                    &:hover {
+
+                        .icon {
+                            color: #5C5C5C;
+                        }
+
+                        &.toggle {
+
+                            .icon {
+                                color: #6AB967;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+    > .buttons {
+        margin-top: 10px;
+
+        display: flex;
+
+        .add_button {
+            .__button;
+            .green;
+            .small;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+// head {
+@__nodeId__: ~"ss_cats_ui__main_container";
+// }
+
+.@{__nodeId__} {
+    position: relative;
+
+    > .cp {
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        display: flex;
+
+        z-index: 1;
+
+        .not_published_mark {
+            cursor: default;
+            margin: 5px;
+            font-size: 23px;
+            color: #FF0000;
+        }
+
+        .button {
+            cursor: pointer;
+            margin: 5px;
+            font-size: 23px;
+            color: rgba(144, 144, 144, 0.5);
+
+            &:hover {
+                color: #4C4C4C;
+            }
+        }
+    }
+
+    &.editable {
+        min-height: 30px;
+    }
+}
