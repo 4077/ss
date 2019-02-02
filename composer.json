@@ -17,6 +17,7 @@
         "fed/ss-components-mce": "*",
         "fed/ss-components-node": "*",
         "fed/ss-components-products": "*",
-        "fed/ss-components-youtube": "*"
+        "fed/ss-components-youtube": "*",
+        "fed/ss-cart": "*"
     }
 }
