@@ -14,7 +14,7 @@ class TreeComponentsCat extends \Schema
             $table->integer('cat_id')->default(0)->unsigned();
             $table->string('cat_type')->default('');
             $table->enum('type', ['renderer', 'wrapper'])->default('renderer');
-            $table->enum('type', ['none', 'merge', 'diff'])->default('none');
+            $table->enum('mode', ['none', 'merge', 'diff'])->default('none');
             $table->string('access')->default('');
         };
     }
