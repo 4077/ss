@@ -1,5 +1,7 @@
 <?php namespace ss\models;
 
+// todo rename to ProductChange
+
 use SleepingOwl\WithJoin\WithJoinTrait;
 
 class ProductsChange extends \Model
