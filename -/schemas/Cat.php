@@ -2,7 +2,7 @@
 
 class Cat extends \Schema
 {
-    protected $table = 'ss_cats';
+    public $table = 'ss_cats';
 
     public function blueprint()
     {
@@ -17,7 +17,7 @@ class Cat extends \Schema
             $table->integer('source_id')->default(0)->unsigned();
             $table->integer('remote_id')->default(0)->unsigned();
             $table->integer('remote_parent_id')->default(0)->unsigned();
-            $table->enum('type', ['page', 'container'])->default(0)->unsigned();
+            $table->enum('type', ['page', 'container'])->default('page');
             $table->string('name')->default('');
             $table->string('short_name')->default('');
             $table->string('remote_name')->default('');
