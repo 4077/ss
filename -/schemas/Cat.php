@@ -2,7 +2,7 @@
 
 class Cat extends \Schema
 {
-    protected $table = 'ss_cats';
+    public $table = 'ss_cats';
 
     public function blueprint()
     {
