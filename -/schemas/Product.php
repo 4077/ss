@@ -24,7 +24,6 @@ class Product extends \Schema
             $table->text('remote_cat_names_path'); // todo deprecate
             $table->integer('position')->default(0)->unsigned();
             $table->boolean('enabled')->default(true);
-            $table->boolean('enabled')->default(true);
             $table->boolean('published')->default(false);
             $table->enum('status', ['initial', 'temporary', 'scheduled', 'discarded', 'moderation'])->default('initial');
             $table->dateTime('status_datetime')->nullable();
