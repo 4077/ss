@@ -20,6 +20,7 @@
         "fed/ss-components-youtube": "*",
         "fed/ss-cart": "*",
         "fed/ss-tm": "*",
-        "fed/std-images": "~0.1"
+        "fed/std-images": "~0.1",
+        "fed/std-shortcodes": "~0.1"
     }
 }
