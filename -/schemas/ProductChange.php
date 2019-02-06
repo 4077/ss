@@ -2,7 +2,7 @@
 
 class ProductChange extends \Schema
 {
-    public $table = 'ss_products';
+    public $table = 'ss_products_changes';
 
     public function blueprint()
     {
