@@ -21,6 +21,7 @@
         "fed/ss-cart": "*",
         "fed/ss-tm": "*",
         "fed/ss-commander": "*",
+        "fed/ss-qr": "*",
         "fed/std-images": "~0.1",
         "fed/std-shortcodes": "~0.1"
     }
