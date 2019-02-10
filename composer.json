@@ -18,6 +18,7 @@
         "fed/ss-components-node": "*",
         "fed/ss-components-products": "*",
         "fed/ss-components-youtube": "*",
+        "fed/ss-components-images": "*",
         "fed/ss-cart": "*",
         "fed/ss-tm": "*",
         "fed/ss-commander": "*",
