@@ -34,8 +34,7 @@ class Svc extends \ewma\Service\Service
         'logs',
         'mailer',
         'render',
-        'events',
-        'sessionLog'
+        'events'
     ];
 
     /**
@@ -97,11 +96,6 @@ class Svc extends \ewma\Service\Service
      * @var \ss\Svc\Events
      */
     public $events = \ss\Svc\Events::class;
-
-    /**
-     * @var \ss\sessionsLog\SessionLog
-     */
-    public $sessionLog = \ss\sessionsLog\SessionLog::class;
 
     //
     //
