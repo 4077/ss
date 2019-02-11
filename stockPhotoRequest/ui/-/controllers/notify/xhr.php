@@ -14,7 +14,7 @@ class Xhr extends \Controller
 
             $shortcode
                 ->ttl(86400 * 3)
-                ->addCall('\std\auth app:loginUser', [
+                ->addCall('\std\ui\auth app:loginUser', [
                     'user' => pack_model($user)
                 ])
                 ->addCall('\ewma\handlers\std~:redirect', [
