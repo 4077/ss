@@ -25,6 +25,7 @@
         "fed/ss-qr": "*",
         "fed/std-images": "~0.1",
         "fed/std-shortcodes": "~0.1",
-        "tedivm/fetch": "^0.7.1"
+        "tedivm/fetch": "^0.7.1",
+        "phpoffice/phpspreadsheet": "^1.5"
     }
 }
