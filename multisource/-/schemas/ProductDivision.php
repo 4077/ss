@@ -13,8 +13,7 @@ class ProductDivision extends \Schema
             $table->integer('product_id')->default(0)->unsigned();
             $table->integer('division_id')->default(0)->unsigned();
             $table->decimal('price', 14, 2)->nullable();
-
-            // todo alt_price
+            $table->tinyInteger('discount')->nullable();
         };
     }
 }

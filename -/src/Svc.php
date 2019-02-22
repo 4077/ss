@@ -27,8 +27,9 @@ class Svc extends \ewma\Service\Service
         'auth',
         'trees',
         'cats',
-        'search',
         'products',
+        'multisource',
+        'search',
         'own',
         'log',
         'logs',
@@ -58,14 +59,19 @@ class Svc extends \ewma\Service\Service
     public $cats = \ss\Svc\Cats::class;
 
     /**
-     * @var \ss\Svc\Search
-     */
-    public $search = \ss\Svc\Search::class;
-
-    /**
      * @var \ss\Svc\Products
      */
     public $products = \ss\Svc\Products::class;
+
+    /**
+     * @var \ss\Svc\Multisource
+     */
+    public $multisource = \ss\Svc\Multisource::class;
+
+    /**
+     * @var \ss\Svc\Search
+     */
+    public $search = \ss\Svc\Search::class;
 
     /**
      * @var \ss\Svc\Own

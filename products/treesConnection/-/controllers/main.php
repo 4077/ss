@@ -80,6 +80,9 @@ class Main extends \Controller
             'price'             => [
                 'label' => 'Цена'
             ],
+            'discount'          => [
+                'label' => 'Скидка'
+            ],
             'units'             => [
                 'label' => 'Ед. изм'
             ],

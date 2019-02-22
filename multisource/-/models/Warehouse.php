@@ -8,4 +8,9 @@ class Warehouse extends \Model
     {
         return $this->morphTo();
     }
+
+    public function group()
+    {
+        return $this->belongsTo(WarehouseGroup::class, 'group_id');
+    }
 }

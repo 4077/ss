@@ -5,7 +5,19 @@
         <div class="division">
             <div class="info">
                 <div class="name">{NAME}</div>
-                <div class="price">{PRICE} руб.<!-- division/units -->/{VALUE}<!-- / --></div>
+                <div class="price_discount">
+                    <div class="price">{PRICE} руб.<!-- division/units --> /{VALUE}<!-- / --></div>
+                    <!-- division/discount -->
+                    <div class="discount">
+                        <div class="value">
+                            -{VALUE}%
+                        </div>
+                        <div class="result_price">
+                            {RESULT_PRICE}<!-- division/discount/units --> /{VALUE}<!-- / -->
+                        </div>
+                    </div>
+                    <!-- / -->
+                </div>
             </div>
             <!-- if division/warehouse -->
             <div class="warehouses">

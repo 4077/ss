@@ -13,6 +13,7 @@ class ProductDivisionHistory extends \Schema
             $table->integer('pivot_id')->default(0)->unsigned();
             $table->dateTime('datetime');
             $table->decimal('price', 14, 2)->nullable();
+            $table->tinyInteger('discount')->nullable();
         };
     }
 }

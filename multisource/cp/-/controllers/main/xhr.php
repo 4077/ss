@@ -20,6 +20,13 @@ class Xhr extends \Controller
         }
     }
 
+    public function createGroup()
+    {
+        \ss\multisource\models\WarehouseGroup::create([]);
+
+        $this->c('<:reload');
+    }
+
     public function selectDivision()
     {
         if ($division = $this->unxpackModel('division')) {

@@ -36,13 +36,30 @@ class DivisionsData extends \Controller
 
         foreach ($multisourceCache as $divisionId => $divisionData) {
             if ($division = $divisionsById[$divisionId] ?? false) {
+                $price = $divisionData['price'] ?? 0;
+
                 $v->assign('division', [
                     'NAME'            => $division->name,
-                    'PRICE'           => number_format__($divisionData['price'] ?? 0),
+                    'PRICE'           => number_format__($price),
                     'TOTAL_STOCK'     => trim_zeros(number_format__($divisionData['total_stock'] ?? 0)),
                     'TOTAL_RESERVED'  => trim_zeros(number_format__($divisionData['total_reserved'] ?? 0)),
                     'TOTAL_AVAILABLE' => trim_zeros(number_format__(($divisionData['total_stock'] ?? 0) - ($divisionData['total_reserved'] ?? 0))),
                 ]);
+
+                $discount = $divisionData['discount'] ?? 0;
+
+                if ($discount) {
+                    $v->assign('division/discount', [
+                        'VALUE'        => $discount,
+                        'RESULT_PRICE' => number_format__($price - $price * $discount / 100)
+                    ]);
+
+                    if ($units = $product->units) {
+                        $v->assign('division/discount/units', [
+                            'VALUE' => $units
+                        ]);
+                    }
+                }
 
                 if ($units = $product->units) {
                     $v->assign('division/units', [

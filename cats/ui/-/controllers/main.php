@@ -20,6 +20,10 @@ class Main extends \Controller
             $this->s = $this->s(false, [
 
             ]);
+
+            $this->sTree = $this->s('|tree-' . $this->cat->tree_id, [
+                'warehouses_group_id' => false
+            ]);
         } else {
             $this->lock();
         }
@@ -105,7 +109,7 @@ class Main extends \Controller
             if ($container->enabled && ($container->published || $globalEditable)) {
                 $output .= $this->c('>container:view', [
                     'cat' => $container
-                ], 'multisource')->render();
+                ])->render();
             }
         }
 

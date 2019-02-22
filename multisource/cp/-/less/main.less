@@ -1,5 +1,5 @@
 // head {
-@import "../../../../../css/std/-/less/main.less";
+@import "../../../../../../modules-vendor/fed/css/std/-/less/main.less";
 
 @__nodeId__: ~"ss_multisource_cp__main";
 // }
@@ -7,17 +7,30 @@
 .@{__nodeId__} {
     display: flex;
 
-    .divisions {
+    .section {
         margin: 5px;
+
+        .label {
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .create_button {
+            .__button;
+            .small;
+            margin-top: 5px;
+        }
+    }
+
+    .divisions {
+        .section;
     }
 
     .warehouses {
-        margin: 5px;
+        .section;
     }
 
-    .create_button {
-        .__button;
-        .small;
-        margin-top: 5px;
+    .groups {
+        .section;
     }
 }

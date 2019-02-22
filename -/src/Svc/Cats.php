@@ -556,4 +556,28 @@ class Cats extends \ewma\Service\Service
             $this->svc->products->updateSearchIndex($product);
         }
     }
+
+    // ui
+
+    private $selectedWarehousesGroup = [];
+
+    public function getSelectedWarehousesGroup($treeId)
+    {
+        if (!appc()->isSuperuser()) {
+            return 1;
+        }
+
+        if (!isset($this->selectedWarehousesGroup[$treeId])) {
+            $this->selectedWarehousesGroup[$treeId] = apps('\ss\cats\ui~:warehouses_group_id|tree-' . $treeId);
+        }
+
+        return $this->selectedWarehousesGroup[$treeId];
+    }
+
+    public function selectWarehousesGroup($treeId, $groupId)
+    {
+        apps('\ss\cats\ui~:warehouses_group_id|tree-' . $treeId, $groupId, RR);
+
+        appc()->se('ss/cats/ui/select_warehouses_group')->trigger();
+    }
 }

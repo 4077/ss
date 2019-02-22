@@ -1,8 +1,8 @@
 <?php namespace ss\multisource\schemas;
 
-class Warehouse extends \Schema
+class WarehouseGroup extends \Schema
 {
-    public $table = 'ss_multisource_warehouses';
+    public $table = 'ss_multisource_warehouses_groups';
 
     public function blueprint()
     {
@@ -11,10 +11,8 @@ class Warehouse extends \Schema
 
             $table->increments('id');
             $table->morphs('target');
-            $table->integer('group_id')->default(0);
             $table->integer('position')->default(0)->unsigned();
             $table->string('name')->default('');
-            $table->text('description');
         };
     }
 }

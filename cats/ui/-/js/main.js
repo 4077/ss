@@ -19,7 +19,7 @@ var __nodeNs__ = "ss_cats_ui";
             });
 
             $(window).on("beforeunload", function () {
-                w.mr('pageClose');
+                // w.mr('pageClose');
             });
         }
     });

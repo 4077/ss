@@ -29,7 +29,7 @@ class Main extends \Controller
                        'DIVISION_CREATE_BUTTON'  => $this->c('\std\ui button:view', [
                            'path'    => '>xhr:createDivision',
                            'class'   => 'create_button',
-                           'content' => 'Создать подразделение'
+                           'content' => 'Создать'
                        ]),
                        'WAREHOUSES'              => handlers()->render('ss/multisource/ui/warehouses:grid', [
                            'set' => [
@@ -45,7 +45,20 @@ class Main extends \Controller
 
                            ],
                            'class'   => 'create_button',
-                           'content' => 'Создать склад'
+                           'content' => 'Создать'
+                       ]),
+                       'GROUPS'                  => handlers()->render('ss/multisource/ui/groups:grid', [
+//                           'set' => [
+//
+//                           ]
+                       ]),
+                       'GROUP_CREATE_BUTTON'     => $this->c('\std\ui button:view', [
+                           'path'    => '>xhr:createGroup',
+                           'data'    => [
+
+                           ],
+                           'class'   => 'create_button',
+                           'content' => 'Создать'
                        ])
                    ]);
 

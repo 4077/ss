@@ -1,5 +1,7 @@
 <?php namespace ss\suppliers\ui\messages\controllers;
 
+// todo rm tdui
+
 class Main extends \Controller
 {
     public function reload()
