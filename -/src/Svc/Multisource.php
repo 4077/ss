@@ -2,16 +2,57 @@
 
 class Multisource extends \ewma\Service\Service
 {
-    protected $services = ['svc'];
+    protected $services = ['svc', 'divisionsIntersections'];
 
     /**
      * @var \ss\Svc
      */
     public $svc = \ss\Svc::class;
 
+    /**
+     * @var \ss\Svc\Multisource\DivisionsIntersections
+     */
+    public $divisionsIntersections = \ss\Svc\Multisource\DivisionsIntersections::class;
+
     //
     //
     //
+
+    private $divisions;
+
+    public function getDivisions()
+    {
+        if (null === $this->divisions) {
+            $this->divisions = table_rows_by_id(\ss\multisource\models\Division::orderBy('position')->get());
+        }
+
+        return $this->divisions;
+    }
+
+    public function getDivision($divisionId)
+    {
+        $divisions = $this->getDivisions();
+
+        return $divisions[$divisionId] ?? null;
+    }
+
+    private $warehouses;
+
+    public function getWarehouses()
+    {
+        if (null === $this->warehouses) {
+            $this->warehouses = table_rows_by_id(\ss\multisource\models\Warehouse::orderBy('position')->get());
+        }
+
+        return $this->warehouses;
+    }
+
+    public function getWarehouse($warehouseId)
+    {
+        $warehouses = $this->getWarehouses();
+
+        return $warehouses[$warehouseId] ?? null;
+    }
 
     private $warehousesGroups;
 
@@ -54,7 +95,7 @@ class Multisource extends \ewma\Service\Service
         $warehousesIds = [];
 
         foreach ($warehouses as $warehouse) {
-            merge($divisionsIds, $warehouse->target_id); // todo warehouses replace morphs to division_id
+            merge($divisionsIds, $warehouse->division_id);
             merge($warehousesIds, $warehouse->id);
         }
 
@@ -126,5 +167,43 @@ class Multisource extends \ewma\Service\Service
         }
 
         return $this->multisourceSummaryCache[$group->id][$product->id];
+    }
+
+    public function getDivisionByWarehouse(\ss\multisource\models\Warehouse $warehouse)
+    {
+        $divisionsByWarehouses = $this->getDivisionsByWarehouses();
+
+        return $divisionsByWarehouses[$warehouse->id] ?? null;
+    }
+
+    private $divisionsIdsByWarehousesIds;
+
+    public function getDivisionIdByWarehouseId($warehouseId)
+    {
+        if (null === $this->divisionsIdsByWarehousesIds) {
+            $divisionsByWarehouses = $this->getDivisionsByWarehouses();
+
+            foreach ($divisionsByWarehouses as $wid => $division) {
+                $this->divisionsIdsByWarehousesIds[$wid] = $division->id;
+            }
+        }
+
+        return $this->divisionsIdsByWarehousesIds[$warehouseId] ?? false;
+    }
+
+    private $divisionsByWarehouses;
+
+    public function getDivisionsByWarehouses()
+    {
+        if (null === $this->divisionsByWarehouses) {
+            $warehouses = $this->getWarehouses();
+            $divisions = $this->getDivisions();
+
+            foreach ($warehouses as $warehouse) {
+                $this->divisionsByWarehouses[$warehouse->id] = $divisions[$warehouse->division_id];
+            }
+        }
+
+        return $this->divisionsByWarehouses;
     }
 }

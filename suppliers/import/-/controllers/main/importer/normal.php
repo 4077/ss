@@ -133,7 +133,6 @@ class Normal extends AbstractImporterController
                         }
 
                         ss()->products->updateMultisourceData($product, [
-                            'division_id'  => $this->division->id,
                             'warehouse_id' => $this->warehouse->id,
                             'price'        => $price,
                             'stock'        => $stock,
@@ -213,8 +212,6 @@ class Normal extends AbstractImporterController
                                                 'current'  => $n,
                                                 'total'    => $count
                                             ]);
-
-//                usleep(50000);
             }
 
             return true;

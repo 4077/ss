@@ -20,6 +20,8 @@ abstract class AbstractDetectorController extends \Controller
             $worksheet = $this->spreadsheet->getActiveSheet();
         }
 
+        $encoding = false;
+
         foreach ($map as $coordinate => $expectedValue) {
             $value = (string)$worksheet->getCell($coordinate);
 
@@ -35,11 +37,30 @@ abstract class AbstractDetectorController extends \Controller
             $this->log('converted: ' . $convertedValue);
             $this->log('expected: ' . $expectedValue);
 
-            if ($value != $expectedValue && $convertedValue != $expectedValue) {
+            $matchExpected = $value == $expectedValue;
+            $matchConverted = $convertedValue == $expectedValue;
+
+            if (!$matchExpected && !$matchConverted) {
                 return false;
+            }
+
+            if (!$encoding && $matchExpected) {
+                $encoding = 'utf-8';
+            }
+
+            if (!$encoding && $matchConverted) {
+                $encoding = 'latin1';
             }
         }
 
-        return true;
+        return $encoding;
+    }
+
+    public function getOutput($importer, $encoding)
+    {
+        return [
+            'importer' => $importer,
+            'encoding' => $encoding
+        ];
     }
 }

@@ -6,6 +6,6 @@ class Division extends \Model
 
     public function warehouses()
     {
-        return $this->morphMany(Warehouse::class, 'target');
+        return $this->hasMany(Warehouse::class);
     }
 }

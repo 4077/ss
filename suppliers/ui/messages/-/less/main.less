@@ -127,4 +127,48 @@
             }
         }
     }
+
+    .pagination {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+
+        .per_page {
+            margin-right: 10px;
+
+            select {
+                padding: 2px;
+            }
+        }
+
+        .paginator {
+
+            .page_button {
+                cursor: pointer;
+                float: left;
+                margin: 2px;
+                padding: 5px 8px;
+                background-color: #f1f1f1;
+                color: #000000;
+                border-radius: 3px;
+
+                &.selected {
+                    background-color: #606060;
+                    color: #F0F0F0;
+                }
+
+                &.hover {
+                    background-color: #b6b6b6;
+                    color: #FFFFFF;
+                }
+            }
+
+            .skipped_pages_button {
+                float: left;
+                margin: 2px;
+                padding: 5px 10px;
+                color: #404040;
+            }
+        }
+    }
 }

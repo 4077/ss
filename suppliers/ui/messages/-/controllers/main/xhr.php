@@ -8,4 +8,18 @@ class Xhr extends \Controller
     {
         $this->c('~:reload|');
     }
+
+    public function setPage($page)
+    {
+        $this->s('~:page|', $page, RR);
+
+        $this->reload();
+    }
+
+    public function setPerPage()
+    {
+        $this->s('~:per_page|', $this->data('value'), RR);
+
+        $this->reload();
+    }
 }

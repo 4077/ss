@@ -34,8 +34,7 @@ class Main extends \Controller
                        'WAREHOUSES'              => handlers()->render('ss/multisource/ui/warehouses:grid', [
                            'set' => [
                                'filter' => [
-                                   'target_type' => \ss\multisource\models\Division::class,
-                                   'target_id'   => $this->s['selected_division_id']
+                                   'division_id' => $this->s['selected_division_id']
                                ]
                            ]
                        ]),

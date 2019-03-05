@@ -10,7 +10,7 @@ class Warehouse extends \Schema
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->morphs('target');
+            $table->integer('division_id');
             $table->integer('group_id')->default(0);
             $table->integer('position')->default(0)->unsigned();
             $table->string('name')->default('');

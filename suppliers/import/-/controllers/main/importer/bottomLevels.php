@@ -161,7 +161,6 @@ class BottomLevels extends AbstractImporterController
             }
 
             ss()->products->updateMultisourceData($product, [
-                'division_id'  => $this->division->id,
                 'warehouse_id' => $this->warehouse->id,
                 'price'        => $productData['price'] ?? null,
                 'stock'        => $productData['stock'] ?? null,

@@ -4,13 +4,13 @@ class Warehouse extends \Model
 {
     public $table = 'ss_multisource_warehouses';
 
-    public function target()
+    public function division()
     {
-        return $this->morphTo();
+        return $this->belongsTo(Division::class);
     }
 
     public function group()
     {
-        return $this->belongsTo(WarehouseGroup::class, 'group_id');
+        return $this->belongsTo(WarehouseGroup::class, 'warehouse_group_id');
     }
 }

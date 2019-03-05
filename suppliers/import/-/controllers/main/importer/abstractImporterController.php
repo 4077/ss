@@ -18,8 +18,6 @@ abstract class AbstractImporterController extends \Controller
 
     public $warehouse;
 
-    public $division;
-
     public $articulPrefix;
 
     public $articulZerofill;
@@ -78,40 +76,39 @@ abstract class AbstractImporterController extends \Controller
             $this->tree = \ss\models\Tree::find($this->data('tree_id')) or $this->lock();
 
             if ($this->warehouse = \ss\multisource\models\Warehouse::find($this->data('warehouse_id'))) {
-                $this->division = $this->warehouse->target or $this->lock();
+                $this->latin1 = $this->data('encoding') == 'latin1';
+
+                \ewma\Data\Data::extract($this, $this->data, '
+                    importerPath        importer_path,
+                    articulPrefix       articul_prefix,
+                    remoteKeyField      remote_key_field,
+                    skipRows            skip_rows,
+                    baseCatId           base_cat_id,
+                    columnsMap          columns_map,
+                    productCheckMap     product_check_map,
+                    catNameColumn       cat_name_column,
+                    createMap           create_map,
+                    updateMap           update_map,
+                    priceMultiplier     price_multiplier,
+                    articulZerofill     articul_zerofill,
+                    productLevels       product_levels,
+                    callbacks           callbacks,
+                    createCats          actions/cats/create,
+                    updateCats          actions/cats/update,
+                    createProducts      actions/products/create,
+                    updateProducts      actions/products/update,
+                    updateProductsCats  actions/products/update_cats,
+                    testRows            test_rows
+                ');
+
+                $this->testRows = l2a($this->testRows);
+
+                $this->fileCode = $this->data('file_code');
+                $this->procFilePath = $this->_public('proc', '~:progress.json');
+                $this->procFileUrl = $this->_publicUrl('proc', '~:progress.json');
             } else {
                 $this->lock();
             }
-
-            \ewma\Data\Data::extract($this, $this->data, '
-                importerPath        importer_path,
-                latin1              latin1,
-                articulPrefix       articul_prefix,
-                remoteKeyField      remote_key_field,
-                skipRows            skip_rows,
-                baseCatId           base_cat_id,
-                columnsMap          columns_map,
-                productCheckMap     product_check_map,
-                catNameColumn       cat_name_column,
-                createMap           create_map,
-                updateMap           update_map,
-                priceMultiplier     price_multiplier,
-                articulZerofill     articul_zerofill,
-                productLevels       product_levels,
-                callbacks           callbacks,
-                createCats          actions/cats/create,
-                updateCats          actions/cats/update,
-                createProducts      actions/products/create,
-                updateProducts      actions/products/update,
-                updateProductsCats  actions/products/update_cats,
-                testRows            test_rows
-            ');
-
-            $this->testRows = l2a($this->testRows);
-
-            $this->fileCode = $this->data('file_code');
-            $this->procFilePath = $this->_public('proc', '~:progress.json');
-            $this->procFileUrl = $this->_publicUrl('proc', '~:progress.json');
         }
     }
 
@@ -132,6 +129,8 @@ abstract class AbstractImporterController extends \Controller
 
     public function handle()
     {
+        mdir($this->_protected('~:locks/' . $this->importer));
+
         $lockFile = fopen($this->_protected('~:locks/' . $this->importer . '.lock'), 'w');
 
         if ($this->isProcessRunning($lockFile)) {
@@ -239,8 +238,11 @@ abstract class AbstractImporterController extends \Controller
             $cellValue = $cell->getValue();
 
             if ($this->latin1) {
-//                $cellValue = iconv('cp1251', 'utf-8', iconv('', 'latin1', $cellValue));
-                $cellValue = mb_convert_encoding(mb_convert_encoding($cellValue, 'latin1', ''), 'utf-8', 'cp1251');
+                if (!$convertedValue = @iconv('cp1251', 'utf-8', iconv('', 'latin1', $cellValue))) {
+                    $convertedValue = @mb_convert_encoding(mb_convert_encoding($cellValue, 'latin1', ''), 'utf-8', 'cp1251');
+                }
+
+                $cellValue = $convertedValue;
             }
 
             $output[] = $cellValue;

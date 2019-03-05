@@ -71,12 +71,16 @@ class DivisionsData extends \Controller
                     foreach (map($divisionData['warehouses'], $warehousesIds) as $warehouseId => $warehouseData) {
                         $warehouse = $warehousesById[$warehouseId];
 
-                        $v->assign('division/warehouse', [
-                            'NAME'      => $warehouse->name,
-                            'STOCK'     => trim_zeros(number_format__($warehouseData['stock'] ?? 0)),
-                            'RESERVED'  => trim_zeros(number_format__($warehouseData['reserved'] ?? 0)),
-                            'AVAILABLE' => trim_zeros(number_format__(($warehouseData['stock'] ?? 0) - ($warehouseData['reserved'] ?? 0))),
-                        ]);
+                        $stock = $warehouseData['stock'] ?? 0;
+
+                        if ($stock > 0) {
+                            $v->assign('division/warehouse', [
+                                'NAME'      => $warehouse->name,
+                                'STOCK'     => trim_zeros(number_format__($stock)),
+                                'RESERVED'  => trim_zeros(number_format__($warehouseData['reserved'] ?? 0)),
+                                'AVAILABLE' => trim_zeros(number_format__($stock - ($warehouseData['reserved'] ?? 0))),
+                            ]);
+                        }
                     }
                 }
             }

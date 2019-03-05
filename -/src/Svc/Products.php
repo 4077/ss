@@ -76,6 +76,8 @@ class Products extends \ewma\Service\Service
             $productData = map($productData, $map);
 
             ra($productData, [
+                'articul'         => $sourceProduct->articul,
+                'vendor_code'     => $sourceProduct->vendor_code,
                 'source_id'       => $sourceProduct->id,
                 'tree_id'         => $targetCat->tree_id,
                 'status'          => 'initial',
@@ -201,8 +203,8 @@ class Products extends \ewma\Service\Service
      *
      * @param        $product
      * @param        $data
-     *                      division_id     - обязательное
-     *                      warehouse_id    - обязательное
+     *                      division_id
+     *                      warehouse_id
      *                      price
      *                      discount
      *                      stock
@@ -217,16 +219,26 @@ class Products extends \ewma\Service\Service
         $updatedProducts = [$product];
         $updatedProductsIds = [$product->id];
 
-        $divisionId = $data['division_id'];
-        $price = $data['price'] ?? null;
-        $discount = $data['discount'] ?? null;
-
-        $warehouseId = $data['warehouse_id'];
+        $warehouseId = $data['warehouse_id'] ?? false;
         $stock = $data['stock'] ?? null;
         $reserved = $data['reserved'] ?? null;
 
-        $this->updateMultisourceDivisionData($product, $divisionId, $price, $discount);
-        $this->updateMultisourceWarehouseData($product, $warehouseId, $stock, $reserved);
+        if ($warehouseId) {
+            $divisionId = $this->svc->multisource->getDivisionIdByWarehouseId($warehouseId);
+        } else {
+            $divisionId = $data['division_id'] ?? false;
+        }
+
+        $price = $data['price'] ?? null;
+        $discount = $data['discount'] ?? null;
+
+        if ($divisionId) {
+            $this->updateMultisourceDivisionData($product, $divisionId, $price, $discount);
+        }
+
+        if ($warehouseId) {
+            $this->updateMultisourceWarehouseData($product, $warehouseId, $stock, $reserved);
+        }
 
         $this->updateMultisourceCache($product);
 
@@ -252,13 +264,13 @@ class Products extends \ewma\Service\Service
 
                         $productUpdated = false;
 
-                        if (in_array('price', $map) || in_array('discount', $map)) {
+                        if ($divisionId && (in_array('price', $map) || in_array('discount', $map))) {
                             $this->updateMultisourceDivisionData($targetProduct, $divisionId, $price, $discount);
 
                             $productUpdated = true;
                         }
 
-                        if (in_array('stock', $map) || in_array('reserved', $map)) {
+                        if ($warehouseId && (in_array('stock', $map) || in_array('reserved', $map))) {
                             $this->updateMultisourceWarehouseData($targetProduct, $warehouseId, $stock, $reserved);
 
                             $productUpdated = true;
@@ -299,13 +311,13 @@ class Products extends \ewma\Service\Service
 
                     $productUpdated = false;
 
-                    if (in_array('price', $map) || in_array('discount', $map)) {
+                    if ($divisionId && (in_array('price', $map) || in_array('discount', $map))) {
                         $this->updateMultisourceDivisionData($sourceProduct, $divisionId, $price, $discount);
 
                         $productUpdated = true;
                     }
 
-                    if (in_array('stock', $map) || in_array('reserved', $map)) {
+                    if ($warehouseId && (in_array('stock', $map) || in_array('reserved', $map))) {
                         $this->updateMultisourceWarehouseData($sourceProduct, $warehouseId, $stock, $reserved);
 
                         $productUpdated = true;
@@ -362,6 +374,8 @@ class Products extends \ewma\Service\Service
 
                 if ($changed) {
                     $historyData['datetime'] = \Carbon\Carbon::now()->toDateTimeString();
+                    $historyData['product_id'] = $product->id;
+                    $historyData['division_id'] = $divisionId;
 
                     $pivot->history()->create($historyData);
                     $pivot->save();
@@ -403,6 +417,8 @@ class Products extends \ewma\Service\Service
 
                 if ($changed) {
                     $historyData['datetime'] = \Carbon\Carbon::now()->toDateTimeString();
+                    $historyData['product_id'] = $product->id;
+                    $historyData['warehouse_id'] = $warehouseId;
 
                     $pivot->history()->create($historyData);
                     $pivot->save();
@@ -427,32 +443,11 @@ class Products extends \ewma\Service\Service
         }
     }
 
-    private $divisions;
-
-    private function getDivisions()
-    {
-        if (null === $this->divisions) {
-            $this->divisions = table_rows_by_id(\ss\multisource\models\Division::orderBy('position')->get());
-        }
-
-        return $this->divisions;
-    }
-
-    private $warehouses;
-
-    public function getWarehouses()
-    {
-        if (null === $this->warehouses) {
-            $this->warehouses = table_rows_by_id(\ss\multisource\models\Warehouse::orderBy('position')->get());
-        }
-
-        return $this->warehouses;
-    }
 
     public function updateMultisourceCache(\ss\models\Product $product)
     {
-        $divisions = $this->getDivisions();
-        $warehouses = $this->getWarehouses();
+        $divisions = $this->svc->multisource->getDivisions();
+        $warehouses = $this->svc->multisource->getWarehouses();
 
         $divisionsIds = array_keys($divisions);
         $warehousesIds = array_keys($warehouses);
@@ -475,7 +470,7 @@ class Products extends \ewma\Service\Service
             $stock = $byWarehouseId[$warehouseId]->stock ?? 0;
             $reserved = $byWarehouseId[$warehouseId]->reserved ?? 0;
 
-            $divisionId = $warehouses[$warehouseId]->target_id;
+            $divisionId = $warehouses[$warehouseId]->division_id;
 
             if (!isset($multisourceCache[$divisionId]['total_stock'])) {
                 $multisourceCache[$divisionId]['total_stock'] = 0;
@@ -846,6 +841,6 @@ class Products extends \ewma\Service\Service
             }
         }
 
-        return [$priceRange ?: number_format__($price), $discountRange ?: $discount, trim_zeros(number_format__($stock)), trim_zeros(number_format__($reserved))];
+        return [$priceRange ?: number_format__($price), $discountRange ?? $discount, trim_zeros(number_format__($stock)), trim_zeros(number_format__($reserved))];
     }
 }

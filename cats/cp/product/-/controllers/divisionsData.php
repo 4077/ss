@@ -52,7 +52,7 @@ class DivisionsData extends \Controller
             $reserved = $byWarehouseId[$warehouseId]->reserved ?? 0;
 
             if ($stock || $reserved) {
-                $divisionId = $warehouses[$warehouseId]->target_id;
+                $divisionId = $warehouses[$warehouseId]->division_id;
 
                 $byDivisionsSummary[$divisionId][$warehouseId]['stock'] = $stock;
                 $byDivisionsSummary[$divisionId][$warehouseId]['reserved'] = $reserved;

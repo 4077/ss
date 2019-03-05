@@ -1,0 +1,48 @@
+// head {
+@__nodeId__: ~"ss_multisource_cp_intersections__main_controls_edit";
+// }
+
+.@{__nodeId__} {
+    position: relative;
+    width: 100%;
+
+    .txt {
+        text-align: center;
+    }
+
+    .delete_button {
+        cursor: pointer;
+        display: none;
+        position: absolute;
+        right: 1px;
+        top: 2px;
+        border-radius: 10px;
+        text-align: center;
+        background-color: #f1f1f1;
+        width: 20px;
+        height: 20px;
+
+        justify-content: center;
+        align-items: center;
+
+        .icon {
+            font-size: 14px;
+            color: #cccccc;
+        }
+
+        &:hover {
+            background-color: #ff205b;
+
+            .icon {
+                color: #ffffff;
+            }
+        }
+    }
+
+    &:hover {
+
+        .delete_button {
+            display: flex;
+        }
+    }
+}

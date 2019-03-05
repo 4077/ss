@@ -17,6 +17,23 @@ class Main extends \Controller
         }
     }
 
+    public function updateCatProductsSummaryRecursive()
+    {
+        if ($cat = \ss\models\Cat::find($this->data('cat_id'))) {
+            $ids = \ewma\Data\Tree::getIds($cat);
+
+            $products = \ss\models\Product::whereIn('cat_id', $ids)->get();
+
+            $count = count($products);
+
+            foreach ($products as $n => $product) {
+                ss()->multisource->updateSummary($product);
+
+                $this->log(($n + 1) . '/' . $count);
+            }
+        }
+    }
+
     public function updateProductSummary()
     {
         if ($product = \ss\models\Product::find($this->data('product_id'))) {

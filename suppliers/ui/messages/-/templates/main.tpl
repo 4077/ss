@@ -1,14 +1,23 @@
 <div class="{__NODE_ID__}" instance="{__INSTANCE__}">
 
+    <div class="pagination">
+        <div class="per_page">
+            {PER_PAGE_SELECTOR}
+        </div>
+        <div class="paginator">
+            {PAGINATOR}
+        </div>
+    </div>
+
     <table class="messages">
         <!-- message -->
         <tr class="message">
-            <td class="datetime">{DATETIME}</td>
+            <td class="datetime" width="1">{DATETIME}</td>
             <td class="info" title="{TITLE}">
                 <div class="from">{FROM}</div>
                 <div class="subject">{SUBJECT}</div>
             </td>
-            <td class="attachments">
+            <td class="attachments" width="1">
                 <table>
                     <!-- message/attachment -->
                     <tr class="attachment {IMPORTED_CLASS}" file_code="{FILE_CODE}" title="{TITLE}">
@@ -28,5 +37,14 @@
         </tr>
         <!-- / -->
     </table>
+
+    <div class="pagination">
+        <div class="per_page">
+            {PER_PAGE_SELECTOR}
+        </div>
+        <div class="paginator">
+            {PAGINATOR}
+        </div>
+    </div>
 
 </div>

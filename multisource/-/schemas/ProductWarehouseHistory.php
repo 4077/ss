@@ -11,6 +11,8 @@ class ProductWarehouseHistory extends \Schema
 
             $table->increments('id');
             $table->integer('pivot_id')->default(0)->unsigned();
+            $table->integer('product_id')->default(0)->unsigned();
+            $table->integer('warehouse_id')->default(0)->unsigned();
             $table->dateTime('datetime');
             $table->decimal('stock', 14, 2)->nullable();
             $table->decimal('reserved', 14, 2)->nullable();

@@ -3,6 +3,9 @@ var __nodeId__ = "ss_suppliers_ui_messages__main";
 var __nodeNs__ = "ss_suppliers_ui_messages";
 // }
 
+ewma.nodes[__nodeId__] = {};
+ewma.nodes[__nodeId__]['procInterval'] = 0;
+
 (function (__nodeNs__, __nodeId__) {
     $.widget(__nodeNs__ + "." + __nodeId__, $.ewma.node, {
         options: {},
@@ -22,14 +25,10 @@ var __nodeNs__ = "ss_suppliers_ui_messages";
             var $w = w.element;
 
             w.e('ss/suppliers/messages/replicated', function (data) {
-                clearInterval(w.procInterval);
-
                 w.mr('reload', {});
             });
 
             w.e('ss/suppliers/messages/attachments/importerDetect', function (data) {
-                clearInterval(w.procInterval);
-
                 w.mr('reload', {});
             });
         },
@@ -43,7 +42,8 @@ var __nodeNs__ = "ss_suppliers_ui_messages";
 
             var prevProgress = 100;
 
-            w.procInterval = setInterval(function () {
+            clearInterval(ewma.nodes[__nodeId__].procInterval);
+            ewma.nodes[__nodeId__].procInterval = setInterval(function () {
                 $.getJSON(o.proc + '?t=' + Date.now(), function (data) {
                     var $attachment = $(".attachment[file_code='" + data.fileCode + "']", $w);
 
