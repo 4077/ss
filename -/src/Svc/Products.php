@@ -770,7 +770,7 @@ class Products extends \ewma\Service\Service
             $source = $product;
 
             do {
-                $multisourceData = _j($source->multisource_cache);
+                $multisourceData = _j($source->multisource_cache) ?: [];
             } while (!$multisourceData && $source = $source->source);
         }
 
