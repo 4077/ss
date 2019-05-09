@@ -30,6 +30,13 @@ class DivisionsIntersections extends \ewma\Service\Service
         return $this->intersections;
     }
 
+    public function getIntersectionByIds($sourceId, $targetId)
+    {
+        $intersections = $this->getIntersections();
+
+        return $intersections[$sourceId][$targetId] ?? null;
+    }
+
     public function getIntersection(\ss\multisource\models\Division $source, \ss\multisource\models\Division $target)
     {
         $intersections = $this->getIntersections();

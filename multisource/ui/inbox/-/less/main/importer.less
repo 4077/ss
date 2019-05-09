@@ -1,0 +1,168 @@
+// head {
+@import "common.less";
+
+@__nodeId__: ~"ss_multisource_ui_inbox__main_importer";
+// }
+
+.@{__nodeId__} {
+    position: relative;
+
+    .importerIndicator() {
+        cursor: pointer;
+        overflow: hidden;
+
+        &:first-child {
+            border-radius: 2px 2px 0 0;
+        }
+
+        &:last-child {
+            border-radius: 0 0 2px 2px;
+        }
+
+        .idle {
+            cursor: pointer;
+            //display: flex;
+            border-radius: 3px;
+
+            .label {
+                position: relative;
+                padding: 4px 6px;
+                z-index: 2;
+
+                white-space: nowrap;
+            }
+
+            &:hover {
+
+                .label {
+                    color: #303030;
+                }
+            }
+        }
+
+        .proc {
+            display: none;
+
+            .progress {
+                position: relative;
+                background-color: #0e365f;
+
+                min-width: 200px;
+                height: 21px;
+
+                .bar {
+                    height: 100%;
+                    background-color: #1A7DD0;
+                    color: #FFFFFF;
+
+                    transition: width 1s linear;
+
+                    &.no_transition {
+                        transition: none !important;
+                    }
+                }
+
+                .info {
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    padding: 4px 0;
+                    color: #FFFFFF;
+                    text-align: center;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .comment {
+                        margin-right: 5px;
+                        font-weight: bold;
+                    }
+
+                    .position {
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+
+        &.pending {
+
+            .label {
+                color: #909090;
+            }
+        }
+
+        &.detected {
+
+            .label {
+                background-color: #C5ECB8;
+                color: #066324;
+            }
+        }
+
+        &.not_detected {
+
+            .label {
+                background-color: #FFE1E1;
+                color: #7D1212;
+            }
+        }
+
+        &.imported {
+
+            .label {
+                background-color: #318edc;
+                color: #bbfeff;
+            }
+        }
+
+        &:hover {
+
+            &.pending {
+
+                .label {
+                    text-decoration: underline;
+                    color: #606060;
+                }
+            }
+
+            &.detected {
+
+                .label {
+                    background-color: #a4db85;
+                }
+            }
+
+            &.not_detected {
+
+                .label {
+                    background-color: #f7aeac;
+                }
+            }
+
+            &.imported {
+
+                .label {
+                    background-color: #2977b8;
+                    color: #bbfeff;
+                }
+            }
+        }
+    }
+
+    //
+
+    .importers {
+
+        .importer {
+            .importerIndicator;
+        }
+    }
+
+    .no_importers {
+        .importerIndicator;
+
+        border-radius: 2px !important;
+    }
+}

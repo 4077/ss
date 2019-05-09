@@ -1,0 +1,51 @@
+// head {
+@__nodeId__: ~"ss_flow_ui_channel__main_fieldSettings";
+// }
+
+.@{__nodeId__} {
+
+    .field {
+        padding: 5px;
+
+        select {
+            padding: 3px;
+            width: 100%;
+        }
+    }
+
+    .preprocessor {
+        display: flex;
+        padding: 5px;
+        color: #adadad;
+
+        .toggle_button {
+            cursor: pointer;
+            margin-right: 5px;
+            padding: 0 5px;
+
+            .icon {
+                font-size: 14px;
+            }
+
+            &:hover {
+                color: #009e33;
+            }
+        }
+
+        .edit_button {
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &.enabled {
+            color: #009e33;
+
+            .toggle_button:hover {
+                color: #88c093;
+            }
+        }
+    }
+}

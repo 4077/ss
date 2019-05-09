@@ -4,6 +4,8 @@ class M3 extends \Controller
 {
     public function multisourceHistoryNewFields()
     {
+        return false;
+
         $warehousesHistory = \ss\multisource\models\ProductWarehouseHistory::with('pivot')->get();
 
         $n = 0;
@@ -29,5 +31,10 @@ class M3 extends \Controller
 
             $this->log('d: ' . ++$n . '/' . $c);
         }
+    }
+
+    public function xpack()
+    {
+        return j64_(\ss\models\Cat::class . ':75566', true);
     }
 }

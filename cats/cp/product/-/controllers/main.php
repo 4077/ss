@@ -204,6 +204,10 @@ class Main extends \Controller
             'label' => 'Артикул'
         ],
         [
+            'field' => 'remote_articul',
+            'label' => 'Артикул (ориг.)'
+        ],
+        [
             'field' => 'vendor_code',
             'label' => 'Код производителя'
         ],

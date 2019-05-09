@@ -1,0 +1,74 @@
+// head {
+@__nodeId__: ~"ss_multisource_ui_mailbox__main";
+// }
+
+.@{__nodeId__} {
+    width: 100%;
+
+    > .nav {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+
+        .mailbox_selector {
+
+            select {
+                padding: 3px;
+            }
+        }
+
+        .update_button {
+            cursor: pointer;
+            margin-left: 10px;
+            width: 25px;
+            height: 25px;
+            border-radius: 25px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .icon {
+                font-size: 14px;
+                color: #909090;
+            }
+
+            &:hover {
+                background-color: #E0E0E0;
+
+                .icon {
+                    color: #404040;
+                }
+            }
+        }
+
+        .update_process_indicator {
+            color: #606060;
+
+            &.error {
+                color: #d20808;
+            }
+        }
+
+        //
+
+        .proc_test_button {
+            cursor: pointer;
+            margin-left: 20px;
+            padding: 7px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .label {
+                font-size: 14px;
+                color: #909090;
+            }
+
+            &:hover {
+                background-color: #E0E0E0;
+            }
+        }
+    }
+}

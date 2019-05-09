@@ -11,6 +11,7 @@
     "minimum-stability": "stable",
     "require": {
         "fed/ewma-module-installer-plugin": "~0.0.1",
+        "fed/ewma": "~0.14",
         "fed/ss-components-bg": "*",
         "fed/ss-components-cats": "*",
         "fed/ss-components-fancybox": "*",

@@ -1,0 +1,144 @@
+// head {
+@import "../../../../../../../../../modules-vendor/fed/css/std/-/less/main.less";
+
+@__nodeId__: ~"ss_multisource_ui_division_importersControls_detectorMap__main";
+// }
+
+.@{__nodeId__} {
+    padding: 5px;
+
+    > .table {
+        display: table;
+        width: 100%;
+        border-spacing: 1px;
+        background-color: #d8d8d8;
+        box-sizing: border-box;
+
+        .txtContainer {
+
+            > input {
+                background-color: #f5f5f5;
+                box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3) inset;
+            }
+
+            > textarea {
+                background-color: #f5f5f5;
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+                padding: 5px;
+                z-index: 2;
+                position: absolute;
+                left: -20px;
+                top: -1px;
+            }
+
+            > .txt {
+                padding: 6px 8px;
+            }
+        }
+
+        > .row {
+            position: relative;
+            display: table-row;
+            box-sizing: border-box;
+
+            > .cell {
+                position: relative;
+                cursor: pointer;
+                display: table-cell;
+                vertical-align: middle;
+
+                &.coord {
+                    width: 1px;
+                    vertical-align: top;
+                    white-space: nowrap;
+                    background-color: #ffffff;
+
+                    .txtContainer;
+                }
+
+                &.value {
+                    cursor: pointer;
+                    position: relative;
+                    background-color: #ffffff;
+
+                    .txtContainer;
+
+                    .label {
+                        float: left;
+                        border-radius: 3px;
+                        padding: 2px 5px;
+                        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+                    }
+
+                    > .require_empty {
+                        padding: 0 5px;
+
+                        .label {
+                            background-color: #c10000;
+                            color: #ffd1d1;
+                        }
+                    }
+
+                    > .require_not_empty {
+                        padding: 0 5px;
+
+                        .label {
+                            background-color: #11983b;
+                            color: #a4ffa4;
+                        }
+                    }
+                }
+
+                &.hover {
+                    background-color: #FAFAFA;
+                }
+            }
+
+            .delete_button {
+                display: none;
+                position: absolute;
+                right: 3px;
+                top: 3px;
+                cursor: pointer;
+                width: 20px;
+                height: 20px;
+                border-radius: 20px;
+                justify-content: center;
+                align-items: center;
+
+                background-color: #e4e4e4;
+
+                .icon {
+                    font-size: 14px;
+                    color: #808080;
+                }
+
+                &:hover {
+                    background-color: #ff0000;
+
+                    .icon {
+                        color: #ffffff;
+                    }
+                }
+            }
+
+            &:hover {
+
+                .delete_button {
+                    display: flex;
+                }
+            }
+        }
+    }
+
+    .create_button {
+        .__button;
+        .small;
+        margin: 5px 0;
+
+        .icon {
+            font-size: 14px;
+        }
+    }
+
+}

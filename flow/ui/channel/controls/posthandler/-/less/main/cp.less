@@ -1,0 +1,68 @@
+// head {
+@__nodeId__: ~"ss_flow_ui_channel_controls_posthandler__main_cp";
+// }
+
+.@{__nodeId__} {
+
+    > .row {
+        display: flex;
+
+        background-color: #181818;
+
+        .links {
+            display: flex;
+            flex-grow: 1;
+
+            padding-left: 3px;
+
+            .node_file {
+                display: block;
+                margin: 5px;
+                color: #606060;
+            }
+
+            .path {
+                display: block;
+                padding: 5px;
+                color: #606060;
+                font-size: 13px;
+
+                &:hover {
+
+                    .icon {
+                        color: #CCCCCC;
+                    }
+                }
+            }
+        }
+
+        .buttons {
+
+            .button() {
+                cursor: pointer;
+                float: left;
+                margin: 0;
+                padding: 5px 15px;
+                color: #BBBBBB;
+
+                &.hover {
+                    //background-color: #808080;
+                    color: #FFFFFF;
+                }
+            }
+
+            .save_button {
+                .button;
+            }
+
+            .reset_button {
+                .button;
+
+                &.hover {
+                    background-color: #80333E;
+                    color: #FFEF87;
+                }
+            }
+        }
+    }
+}

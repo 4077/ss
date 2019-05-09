@@ -47,6 +47,25 @@ class Multisource extends \ewma\Service\Service
         return $this->warehouses;
     }
 
+    private $warehousesByDivisionsIds = [];
+
+    public function getDivisionWarehouses($divisionId)
+    {
+        if (!isset($this->warehousesByDivisionsIds[$divisionId])) {
+            $this->warehousesByDivisionsIds[$divisionId] = [];
+
+            $warehouses = $this->getWarehouses();
+
+            foreach ($warehouses as $warehouse) {
+                if ($warehouse->division_id == $divisionId) {
+                    $this->warehousesByDivisionsIds[$divisionId][] = $warehouse;
+                }
+            }
+        }
+
+        return $this->warehousesByDivisionsIds[$divisionId];
+    }
+
     public function getWarehouse($warehouseId)
     {
         $warehouses = $this->getWarehouses();
@@ -76,7 +95,7 @@ class Multisource extends \ewma\Service\Service
 
     private $groupsWarehouses = [];
 
-    private function getGroupWarehouses(\ss\multisource\models\WarehouseGroup $group)
+    public function getGroupWarehouses(\ss\multisource\models\WarehouseGroup $group)
     {
         if (!isset($this->groupsWarehouses[$group->id])) {
             $this->groupsWarehouses[$group->id] = $group->warehouses()->get();
@@ -103,12 +122,29 @@ class Multisource extends \ewma\Service\Service
             ->whereIn('division_id', $divisionsIds)
             ->get();
 
+        $notSuppliersMinPrice = PHP_INT_MAX;
+        $notSuppliersMaxPrice = 0;
+
+        $suppliersMinPrice = PHP_INT_MAX;
+        $suppliersMaxPrice = 0;
+
         $minPrice = PHP_INT_MAX;
         $maxPrice = 0;
+
         $minDiscount = PHP_INT_MAX;
         $maxDiscount = 0;
 
         foreach ($productOnDivisions as $productOnDivision) {
+            $division = $this->getDivision($productOnDivision->division_id);
+
+            if ($division->supplier) {
+                $suppliersMinPrice = min($suppliersMinPrice, $productOnDivision->price);
+                $suppliersMaxPrice = max($suppliersMaxPrice, $productOnDivision->price);
+            } else {
+                $notSuppliersMinPrice = min($notSuppliersMinPrice, $productOnDivision->price);
+                $notSuppliersMaxPrice = max($notSuppliersMaxPrice, $productOnDivision->price);
+            }
+
             $minPrice = min($minPrice, $productOnDivision->price);
             $maxPrice = max($maxPrice, $productOnDivision->price);
 
@@ -131,8 +167,15 @@ class Multisource extends \ewma\Service\Service
         $summary->stock = $stock;
         $summary->reserved = $reserved;
 
+        $summary->not_suppliers_min_price = $notSuppliersMinPrice == PHP_INT_MAX ? 0 : $notSuppliersMinPrice;
+        $summary->not_suppliers_max_price = $notSuppliersMaxPrice;
+
+        $summary->suppliers_min_price = $suppliersMinPrice == PHP_INT_MAX ? 0 : $suppliersMinPrice;
+        $summary->suppliers_max_price = $suppliersMaxPrice;
+
         $summary->min_price = $minPrice == PHP_INT_MAX ? 0 : $minPrice;
         $summary->max_price = $maxPrice;
+
         $summary->min_discount = $minDiscount == PHP_INT_MAX ? 0 : $minDiscount;
         $summary->max_discount = $maxDiscount;
 

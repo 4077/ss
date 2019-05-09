@@ -211,11 +211,14 @@ class Products extends \ewma\Service\Service
      *                      reserved
      *
      * @param string $treesConnectionsInstance
+     * @param bool   $updateConnected
      *
      * @return array
      */
-    public function updateMultisourceData(\ss\models\Product $product, $data, $treesConnectionsInstance = '')
+    public function updateMultisourceData(\ss\models\Product $product, $data, $treesConnectionsInstance = '', $updateConnected = true)
     {
+//        start_time('updateMultisourceData');
+
         $updatedProducts = [$product];
         $updatedProductsIds = [$product->id];
 
@@ -242,108 +245,112 @@ class Products extends \ewma\Service\Service
 
         $this->updateMultisourceCache($product);
 
-        $updateDescendants = function ($product) use (
-            &$updateDescendants,
-            $data,
-            $treesConnectionsInstance,
-            &$updatedProducts,
-            &$updatedProductsIds,
-            $divisionId,
-            $warehouseId,
-            $price,
-            $discount,
-            $stock,
-            $reserved
-        ) {
-            $descendants = ss()->trees->connections->getDescendants($product->tree, $treesConnectionsInstance);
+        if ($updateConnected) {
+            $updateDescendants = function ($product) use (
+                &$updateDescendants,
+                $data,
+                $treesConnectionsInstance,
+                &$updatedProducts,
+                &$updatedProductsIds,
+                $divisionId,
+                $warehouseId,
+                $price,
+                $discount,
+                $stock,
+                $reserved
+            ) {
+                $descendants = ss()->trees->connections->getDescendants($product->tree, $treesConnectionsInstance);
 
-            foreach ($descendants as $descendant) {
-                if ($targetProduct = \ss\models\Product::where('source_id', $product->id)->where('tree_id', $descendant->target_id)->first()) {
-                    if (!in_array($targetProduct->id, $updatedProductsIds)) {
-                        $map = array_keys(array_filter(ss()->trees->connections->adapterData($descendant, 'products', 'st') ?? []));
+                foreach ($descendants as $descendant) {
+                    if ($targetProduct = \ss\models\Product::where('source_id', $product->id)->where('tree_id', $descendant->target_id)->first()) {
+                        if (!in_array($targetProduct->id, $updatedProductsIds)) {
+                            $map = array_keys(array_filter(ss()->trees->connections->adapterData($descendant, 'products', 'st') ?? []));
+
+                            $productUpdated = false;
+
+                            if ($divisionId && (in_array('price', $map) || in_array('discount', $map))) {
+                                $this->updateMultisourceDivisionData($targetProduct, $divisionId, $price, $discount);
+
+                                $productUpdated = true;
+                            }
+
+                            if ($warehouseId && (in_array('stock', $map) || in_array('reserved', $map))) {
+                                $this->updateMultisourceWarehouseData($targetProduct, $warehouseId, $stock, $reserved);
+
+                                $productUpdated = true;
+                            }
+
+                            if ($productUpdated) {
+                                $this->updateMultisourceCache($targetProduct);
+
+                                $updatedProducts[] = $targetProduct;
+                                $updatedProductsIds[] = $targetProduct->id;
+                            }
+                        }
+
+                        $updateDescendants($targetProduct);
+                    }
+                }
+            };
+
+            $updateAscendants = function ($product) use (
+                &$updateAscendants,
+                $data,
+                $updateDescendants,
+                $treesConnectionsInstance,
+                &$updatedProducts,
+                &$updatedProductsIds,
+                $divisionId,
+                $warehouseId,
+                $price,
+                $discount,
+                $stock,
+                $reserved
+            ) {
+                $ascendants = ss()->trees->connections->getAscendants($product->tree, $treesConnectionsInstance);
+
+                foreach ($ascendants as $ascendant) {
+                    if ($sourceProduct = \ss\models\Product::where('id', $product->source_id)->where('tree_id', $ascendant->source_id)->first()) {
+                        $map = array_keys(array_filter(ss()->trees->connections->adapterData($ascendant, 'products', 'ts') ?? []));
 
                         $productUpdated = false;
 
                         if ($divisionId && (in_array('price', $map) || in_array('discount', $map))) {
-                            $this->updateMultisourceDivisionData($targetProduct, $divisionId, $price, $discount);
+                            $this->updateMultisourceDivisionData($sourceProduct, $divisionId, $price, $discount);
 
                             $productUpdated = true;
                         }
 
                         if ($warehouseId && (in_array('stock', $map) || in_array('reserved', $map))) {
-                            $this->updateMultisourceWarehouseData($targetProduct, $warehouseId, $stock, $reserved);
+                            $this->updateMultisourceWarehouseData($sourceProduct, $warehouseId, $stock, $reserved);
 
                             $productUpdated = true;
                         }
 
                         if ($productUpdated) {
-                            $this->updateMultisourceCache($targetProduct);
+                            $this->updateMultisourceCache($sourceProduct);
 
-                            $updatedProducts[] = $targetProduct;
-                            $updatedProductsIds[] = $targetProduct->id;
+                            $updatedProducts[] = $sourceProduct;
+                            $updatedProductsIds[] = $sourceProduct->id;
                         }
-                    }
 
-                    $updateDescendants($targetProduct);
+                        $updateAscendants($sourceProduct);
+                        $updateDescendants($sourceProduct);
+                    }
                 }
-            }
-        };
+            };
 
-        $updateAscendants = function ($product) use (
-            &$updateAscendants,
-            $data,
-            $updateDescendants,
-            $treesConnectionsInstance,
-            &$updatedProducts,
-            &$updatedProductsIds,
-            $divisionId,
-            $warehouseId,
-            $price,
-            $discount,
-            $stock,
-            $reserved
-        ) {
-            $ascendants = ss()->trees->connections->getAscendants($product->tree, $treesConnectionsInstance);
-
-            foreach ($ascendants as $ascendant) {
-                if ($sourceProduct = \ss\models\Product::where('id', $product->source_id)->where('tree_id', $ascendant->source_id)->first()) {
-                    $map = array_keys(array_filter(ss()->trees->connections->adapterData($ascendant, 'products', 'ts') ?? []));
-
-                    $productUpdated = false;
-
-                    if ($divisionId && (in_array('price', $map) || in_array('discount', $map))) {
-                        $this->updateMultisourceDivisionData($sourceProduct, $divisionId, $price, $discount);
-
-                        $productUpdated = true;
-                    }
-
-                    if ($warehouseId && (in_array('stock', $map) || in_array('reserved', $map))) {
-                        $this->updateMultisourceWarehouseData($sourceProduct, $warehouseId, $stock, $reserved);
-
-                        $productUpdated = true;
-                    }
-
-                    if ($productUpdated) {
-                        $this->updateMultisourceCache($sourceProduct);
-
-                        $updatedProducts[] = $sourceProduct;
-                        $updatedProductsIds[] = $sourceProduct->id;
-                    }
-
-                    $updateAscendants($sourceProduct);
-                    $updateDescendants($sourceProduct);
-                }
-            }
-        };
-
-        $updateDescendants($product);
-        $updateAscendants($product);
+            $updateDescendants($product);
+            $updateAscendants($product);
+        }
 
         $this->updateMultisourceSummary($updatedProducts);
 
         foreach ($updatedProducts as $updatedProduct) {
             ss()->products->dropCache($updatedProduct);
         }
+
+//        appc('\ss~')->log(end_time('updateMultisourceData'));
 
         return $updatedProducts;
     }
@@ -436,13 +443,22 @@ class Products extends \ewma\Service\Service
         }
     }
 
+    public function clearMultisourceData(\ss\models\Product $product)
+    {
+        \ss\multisource\models\ProductDivision::where('product_id', $product->id)->delete();
+        \ss\multisource\models\ProductWarehouse::where('product_id', $product->id)->delete();
+
+        $this->svc->multisource->updateSummary($product);
+
+        $this->updateMultisourceCache($product);
+    }
+
     private function updateMultisourceSummary($products)
     {
         foreach ($products as $product) {
             $this->svc->multisource->updateSummary($product);
         }
     }
-
 
     public function updateMultisourceCache(\ss\models\Product $product)
     {

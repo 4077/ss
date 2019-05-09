@@ -9,7 +9,7 @@ class Xhr extends \Controller
         if ($warehouse = $this->unxpackModel('warehouse')) {
             $groupId = $this->data('value');
 
-            if ($group = \ss\multisource\models\WarehouseGroup::find($groupId)) {
+            if ($groupId == 0 || $group = \ss\multisource\models\WarehouseGroup::find($groupId)) {
                 $warehouse->group_id = $groupId;
                 $warehouse->save();
             }

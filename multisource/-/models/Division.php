@@ -8,4 +8,26 @@ class Division extends \Model
     {
         return $this->hasMany(Warehouse::class);
     }
+
+    public function workers()
+    {
+        return $this->hasMany(Worker::class);
+    }
+
+    public function importers()
+    {
+        return $this->hasMany(Importer::class);
+    }
 }
+
+class DivisionObserver
+{
+    public function creating(Division $model)
+    {
+        $position = Division::max('position') + 10;
+
+        $model->position = $position;
+    }
+}
+
+Division::observe(new DivisionObserver);

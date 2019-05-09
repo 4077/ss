@@ -14,3 +14,15 @@ class Warehouse extends \Model
         return $this->belongsTo(WarehouseGroup::class, 'warehouse_group_id');
     }
 }
+
+class WarehouseObserver
+{
+    public function creating(Warehouse $model)
+    {
+        $position = Warehouse::max('position') + 10;
+
+        $model->position = $position;
+    }
+}
+
+Warehouse::observe(new WarehouseObserver);

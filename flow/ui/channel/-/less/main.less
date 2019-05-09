@@ -1,0 +1,333 @@
+// head {
+@import "../../../../../../../modules-vendor/fed/css/std/-/less/main.less";
+
+@__nodeId__: ~"ss_flow_ui_channel__main";
+// }
+
+.@{__nodeId__} {
+
+    .update_button {
+        cursor: pointer;
+        margin: -10px -10px 10px;
+        min-height: 24px;
+        background-color: #2f1c25;
+        color: #442200;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .idle {
+            color: #ffffff;
+            padding: 5px 10px;
+            color: #ffaa00;
+
+            .icon {
+                font-size: 22px;
+            }
+        }
+
+        .proc {
+            display: none;
+            width: 100%;
+
+            .progress {
+                position: relative;
+                background-color: #2f1c25;
+
+                width: 100%;
+                height: 32px;
+
+                overflow: hidden;
+
+                .bar {
+                    height: 32px;
+                    background-color: #b53b3b;
+                    color: #fff9e9;
+
+                    transition: width 1s linear;
+
+                    &.no_transition {
+                        transition: none !important;
+                    }
+                }
+
+                .info {
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    padding: 8px 0;
+                    color: #fff9e9;
+                    text-align: center;
+                    font-size: 15px;
+
+                    .step {
+                        font-weight: bold;
+                    }
+                }
+
+                .break_button {
+                    position: absolute;
+                    right: 5px;
+                    top: 6px;
+                    color: #ffe1e1;
+                    padding: 3px 6px;
+                    border-radius: 3px;
+                    background: linear-gradient(#9a0099, #750061);
+                    opacity: 0.3;
+
+                    &:hover {
+                        background: linear-gradient(#b80000, #a90000);
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        &:hover {
+            background-color: #38232f;
+
+        }
+    }
+
+    .endpoints {
+        display: table;
+        width: 100%;
+
+        .row {
+            display: table-row;
+
+            .cell {
+                display: table-cell;
+
+                &.center {
+                    width: 60px;
+                }
+            }
+
+            &.trees {
+
+                .cell {
+
+                }
+            }
+
+            &.fields {
+
+                .collation_mode {
+                    padding: 5px;
+                    width: 60px;
+
+                    select {
+                        padding: 3px;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    .collation {
+        display: flex;
+        justify-content: center;
+        margin: 10px 0;
+
+        select {
+            padding: 3px;
+            margin: 0 5px;
+
+            &.field {
+                width: 150px;
+            }
+        }
+    }
+
+    .collation_cp {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin: 10px 5px;
+
+        .connections_count {
+            cursor: pointer;
+            font-size: 21px;
+            color: #287cbb;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .collation_button {
+            margin-left: 5px;
+
+            .idle {
+                cursor: pointer;
+                display: flex;
+                padding: 5px 7px;
+                border-radius: 3px;
+                border-radius: 20px;
+
+                .icon {
+                    font-size: 14px;
+                    color: #B0B0B0;
+                }
+
+                .label {
+                    color: #808080;
+                }
+
+                &:hover {
+                    background-color: #ebebeb;
+
+                    .icon {
+                        color: #404040;
+                    }
+
+                    .label {
+                        color: #303030;
+                    }
+                }
+            }
+
+            .proc {
+                display: none;
+
+                .progress {
+                    position: relative;
+                    background-color: #154060;
+
+                    min-width: 200px;
+                    height: 24px;
+
+                    border-radius: 4px;
+                    overflow: hidden;
+
+                    .bar {
+                        height: 24px;
+                        background-color: #287cbb;
+                        color: #FFFFFF;
+
+                        transition: width 1s linear;
+
+                        &.no_transition {
+                            transition: none !important;
+                        }
+                    }
+
+                    .info {
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                        padding: 6px 0;
+                        color: #FFFFFF;
+                        text-align: center;
+
+                        .step {
+                            font-weight: bold;
+                        }
+                    }
+                }
+
+                .break_button {
+                    .__button;
+                    .small;
+                    .red;
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        .collate_test_button {
+            .__button;
+            .small;
+        }
+    }
+
+    .update_cp {
+
+        > .bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            width: 100%;
+            margin: 0 -10px;
+            padding: 0 10px;
+            flex-shrink: 0;
+            background: linear-gradient(#e8e8e8, #dcdcdc);
+
+            > .tabs {
+                display: flex;
+
+                .tab {
+                    margin-top: 2px;
+                    cursor: pointer;
+                    padding: 10px 15px;
+                    color: #383838;
+
+                    &.selected {
+                        cursor: default;
+                        background-color: #FFFFFF;
+                        color: #000;
+                    }
+
+                    &:hover {
+                        background: linear-gradient(#FDFDFD, #F0F0F0);
+
+                        &.selected {
+                            background: #FFFFFF;
+                        }
+                    }
+                }
+            }
+
+            .posthandler {
+                display: flex;
+                padding: 5px 3px;
+                color: #adadad;
+                border-radius: 5px;
+
+                .toggle_button {
+                    cursor: pointer;
+                    margin-right: 5px;
+                    padding: 0 5px;
+
+                    .icon {
+                        font-size: 14px;
+                    }
+
+                    &:hover {
+                        color: #c1006e;
+                    }
+                }
+
+                .edit_button {
+                    cursor: pointer;
+                    padding-right: 5px;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+
+                &.enabled {
+                    background-color: #ffffff;
+                    color: #c1006e;
+
+                    .toggle_button:hover {
+                        color: #c15994;
+                    }
+                }
+            }
+        }
+
+        > .content {
+
+            &.padding {
+                padding: 10px 0;
+            }
+        }
+    }
+}

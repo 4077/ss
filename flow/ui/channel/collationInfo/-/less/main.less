@@ -1,0 +1,154 @@
+// head {
+@__nodeId__: ~"ss_flow_ui_channel_collationInfo__main";
+// }
+
+.@{__nodeId__} {
+
+    .h100() {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        flex-grow: 1;
+    }
+
+    .h100;
+
+    .top_bar {
+
+        .counts {
+            display: flex;
+            background-color: #4a4a4a;
+
+            .count {
+                flex-grow: 1;
+                width: 50%;
+                display: flex;
+                justify-content: center;
+
+                padding: 8px;
+                font-weight: bold;
+
+                &.middle {
+                    flex-grow: 0;
+                    width: 150px;
+                    color: #dcdcdc;
+                    background-color: #565656;
+                }
+
+                &.sources {
+                    color: #a1f0ff;
+                }
+
+                &.targets {
+                    color: #ff8686;
+                }
+            }
+
+            &.scroll_mode {
+
+                .count {
+
+                    &.middle {
+                        color: #fffb00;
+                    }
+
+                    &.sources {
+                        color: #fffb00;
+                    }
+
+                    &.targets {
+                        color: #fffb00;
+                    }
+                }
+            }
+        }
+    }
+
+    .content {
+        .h100;
+
+        flex-direction: row;
+
+        .panel {
+            .h100;
+            flex-grow: 1;
+
+            &.products {
+                box-sizing: border-box;
+                width: 50%;
+
+                .product {
+                    padding: 2px 5px;
+                    cursor: default;
+                    min-height: 16px;
+                    line-height: 16px;
+                    white-space: nowrap;
+                    color: #d0d0d0;
+
+                    display: flex;
+
+                    .id {
+                        margin-right: 5px;
+                        cursor: pointer;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+
+                    .field_value {
+
+                    }
+
+                    &:hover {
+                        background-color: #f0f0f0;
+                    }
+
+                    &.highlight {
+                        background-color: #FFFF00;
+                    }
+                }
+
+                &.sources {
+
+                    .product.connected {
+                        color: #1f92ff;
+                    }
+                }
+
+                &.targets {
+
+                    .product.connected {
+                        color: #ff4848;
+                    }
+                }
+            }
+
+            &.connections {
+                box-sizing: border-box;
+                flex-grow: 0;
+                width: 150px;
+
+                .connection {
+                    cursor: default;
+                    min-height: 16px;
+                    line-height: 16px;
+                    padding: 2px;
+                    display: flex;
+                    justify-content: center;
+                    color: #606060;
+
+                    &.highlight {
+                        background-color: #FFFF00;
+                    }
+
+                    &:hover {
+                        background-color: #f0f0f0;
+                    }
+                }
+            }
+
+            overflow: auto;
+        }
+    }
+}

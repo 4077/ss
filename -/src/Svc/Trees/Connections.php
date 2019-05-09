@@ -16,23 +16,40 @@ class Connections extends \ewma\Service\Service
         })->first();
     }
 
+    private $descendants;
+
     public function getDescendants($tree, $instance = '')
     {
-        return \ss\models\TreesConnection::where('instance', $instance)->where('source_id', $tree->id)->get();
+        if (!isset($this->descendants[$tree->id][$instance])) {
+            $this->descendants[$tree->id][$instance] = \ss\models\TreesConnection::where('instance', $instance)->where('source_id', $tree->id)->get();
+        }
+
+        return $this->descendants[$tree->id][$instance];
     }
+
+    private $ascendants;
 
     public function getAscendants($tree, $instance = '')
     {
-        return \ss\models\TreesConnection::where('instance', $instance)->where('target_id', $tree->id)->get();
+        if (!isset($this->ascendants[$tree->id][$instance])) {
+            $this->ascendants[$tree->id][$instance] = \ss\models\TreesConnection::where('instance', $instance)->where('target_id', $tree->id)->get();
+        }
+
+        return $this->ascendants[$tree->id][$instance];
     }
+
+    private $adaptersData;
 
     public function adapterData($connection, $adapter, $direction, $value = null)
     {
         $connectionData = _j($connection->data);
 
         if (null === $value) {
-//            return (array)ap($connectionData, 'adapters/' . $adapter . '/' . $direction);
-            return ap($connectionData, 'adapters/' . $adapter . '/' . $direction);
+            if (!isset($this->adaptersData[$connection->id][$adapter][$direction])) {
+                $this->adaptersData[$connection->id][$adapter][$direction] = ap($connectionData, 'adapters/' . $adapter . '/' . $direction);
+            }
+
+            return $this->adaptersData[$connection->id][$adapter][$direction];
         } else {
             ap($connectionData, 'adapters/' . $adapter . '/' . $direction, $value);
 

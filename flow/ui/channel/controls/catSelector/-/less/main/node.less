@@ -1,0 +1,70 @@
+// head {
+@import "../../../../../../../../../../modules-vendor/fed/js-jquery/ui/-/less/icons.less";
+
+@__nodeId__: ~"ss_flow_ui_channel_controls_catSelector__main_node";
+// }
+
+.@{__nodeId__} {
+    @buttonSize: 28px;
+
+    > .content {
+        cursor: pointer;
+        position: relative;
+        min-width: 250px;
+        min-height: @buttonSize;
+
+        .name {
+            display: flex;
+            align-items: center;
+
+            padding: 7px 10px 7px 10px;
+
+            .icon {
+                display: none;
+                float: left;
+                margin-left: 10px;
+                color: #327FAD;
+            }
+        }
+
+        &.container {
+
+            .name {
+                padding-left: 5px;
+            }
+        }
+
+        &.root {
+            cursor: default;
+            background-color: #404040;
+            color: #FFFFFF;
+        }
+
+        &.container {
+
+            .name {
+
+                .icon {
+                    display: block;
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        &.disabled {
+            color: #A0A0A0;
+        }
+
+        &.selected {
+            background-color: #efefef;
+        }
+
+        &.hover {
+            background-color: #F3F3F3;
+
+            &.root {
+                background-color: #404040;
+            }
+        }
+    }
+}

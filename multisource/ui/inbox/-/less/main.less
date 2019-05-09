@@ -1,0 +1,213 @@
+// head {
+@__nodeId__: ~"ss_multisource_ui_inbox__main";
+// }
+
+.@{__nodeId__} {
+    width: 100%;
+
+    table.messages {
+        width: 100%;
+        background-color: #E0E0E0;
+        border-spacing: 1px;
+
+        tr.message {
+
+            .cell() {
+                background-color: #FFF;
+                padding: 5px;
+            }
+
+            > td.datetime {
+                .cell;
+                color: #545360;
+                white-space: nowrap;
+            }
+
+            > td.info {
+                .cell;
+
+                cursor: pointer;
+
+                .from {
+                    font-weight: bold;
+                }
+
+                .subject {
+                    margin-top: 5px;
+                    color: #606060;
+                }
+
+                &:hover {
+                    background-color: #f4f4f4;
+                }
+            }
+
+            > td.attachments {
+                .cell;
+
+                > table {
+                    border-spacing: 1px;
+
+                    tr.attachment {
+
+                        a {
+                            display: block;
+                            padding: 4px;
+                            color: #47566D;
+                            text-decoration: none;
+                            white-space: nowrap;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+
+                        .importer {
+
+                        }
+
+                        &.importing {
+
+                            .importer {
+                                background-color: #54ADEC;
+                                color: #FFFFFF;
+
+                                .progress_bar {
+                                    display: block;
+                                }
+                            }
+                        }
+
+                        &.imported {
+
+                            .importer {
+                                background-color: #B9E9FF;
+                                color: #0F3C63;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .top_bar {
+        display: flex;
+        align-items: center;
+
+        justify-content: space-between;
+
+        .detect_importers_button {
+
+            .idle {
+                cursor: pointer;
+                display: flex;
+                padding: 5px 7px;
+                border-radius: 3px;
+
+                .icon {
+                    margin-right: 7px;
+                    font-size: 14px;
+                    color: #B0B0B0;
+                }
+
+                .label {
+                    color: #808080;
+                }
+
+                &:hover {
+                    background-color: #ebebeb;
+
+                    .icon {
+                        color: #404040;
+                    }
+
+                    .label {
+                        color: #303030;
+                    }
+                }
+            }
+
+            .proc {
+                display: none;
+
+                .progress {
+                    position: relative;
+                    background-color: #2A542B;
+
+                    min-width: 200px;
+                    height: 24px;
+
+                    .bar {
+                        height: 24px;
+                        background-color: #7CB51D;
+                        color: #FFFFFF;
+
+                        transition: width 1s linear;
+
+                        &.no_transition {
+                            transition: none !important;
+                        }
+                    }
+
+                    .info {
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                        padding: 6px 0;
+                        color: #FFFFFF;
+                        text-align: center;
+
+                        .step {
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .pagination {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+
+        .per_page {
+            margin-right: 10px;
+
+            select {
+                padding: 2px;
+            }
+        }
+
+        .paginator {
+
+            .page_button {
+                cursor: pointer;
+                float: left;
+                margin: 2px;
+                padding: 5px 8px;
+                background-color: #f1f1f1;
+                color: #000000;
+                border-radius: 3px;
+
+                &.selected {
+                    background-color: #606060;
+                    color: #F0F0F0;
+                }
+
+                &.hover {
+                    background-color: #b6b6b6;
+                    color: #FFFFFF;
+                }
+            }
+
+            .skipped_pages_button {
+                float: left;
+                margin: 2px;
+                padding: 5px 10px;
+                color: #404040;
+            }
+        }
+    }
+}

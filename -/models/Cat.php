@@ -8,6 +8,8 @@ class Cat extends \Model
 
     protected $guarded = []; // ?
 
+    public $hiddenByPublisher = null;
+
     public function tree()
     {
         return $this->belongsTo(Tree::class);

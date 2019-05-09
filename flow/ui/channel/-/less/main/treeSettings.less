@@ -1,0 +1,127 @@
+// head {
+@import "../../../../../../../../modules-vendor/fed/css/std/-/less/main.less";
+
+@__nodeId__: ~"ss_flow_ui_channel__main_treeSettings";
+// }
+
+.@{__nodeId__} {
+
+    .tree {
+        display: flex;
+        padding: 5px;
+        min-width: 150px;
+
+        &.source {
+            //justify-content: flex-end;
+        }
+
+        .mode_icon {
+            font-size: 14px;
+            margin-right: 5px;
+
+            &.fa-folder {
+                color: #F1B457;
+            }
+
+            &.fa-file {
+                color: #5BADDE;
+            }
+        }
+
+        .toggle_connections_button {
+            cursor: pointer;
+
+            margin-top: -3px;
+            margin-left: 5px;
+            padding: 3px;
+            border-radius: 4px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .icon {
+                width: 7px;
+                font-size: 13px;
+                color: #909090;
+            }
+
+            &:hover {
+                background-color: #e9e9e9;
+
+                .icon {
+                    color: #404040;
+                }
+            }
+
+            &.enabled {
+
+                .icon {
+
+                    &.asc {
+                        color: #0091C5;
+                    }
+
+                    &.desc {
+                        color: #CC3434;
+                    }
+                }
+            }
+        }
+    }
+
+    .cats {
+
+        .cat {
+            position: relative;
+            padding: 5px 6px;
+            font-size: 11px;
+
+            .remove_button {
+                display: none;
+                cursor: pointer;
+                position: absolute;
+                right: 0;
+                top: 0;
+
+                width: 20px;
+                height: 20px;
+                border-radius: 20px;
+
+                justify-content: center;
+                align-items: center;
+
+                background-color: #dcdcdc;
+                color: #909090;
+
+                .icon {
+                    font-size: 14px;
+                }
+
+                &:hover {
+                    background-color: #f9d0d5;
+                    color: #c52308;
+                }
+            }
+
+            &:hover {
+
+                .remove_button {
+                    display: flex;
+                }
+            }
+        }
+
+        .add_filtering_cat_button {
+            cursor: pointer;
+            font-size: 11px;
+            color: #a0a0a0;
+            padding: 5px 20px;
+
+            &:hover {
+                text-decoration: underline;
+                color: #404040;
+            }
+        }
+    }
+}

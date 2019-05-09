@@ -1,0 +1,65 @@
+// head {
+@__nodeId__: ~"ss_flow_ui_channels__main";
+// }
+
+.@{__nodeId__} {
+    position: relative;
+    overflow: hidden;
+
+    .h100() {
+        display: flex;
+        flex-grow: 1;
+    }
+
+    .h100;
+
+    background-color: #e7e7e7;
+
+    canvas {
+        position: relative;
+        z-index: 2;
+    }
+
+    .node {
+        position: absolute;
+        display: none;
+        z-index: 3;
+    }
+
+    .contextmenu() {
+        position: absolute;
+        display: none;
+        z-index: 10;
+    }
+
+    .contextmenu {
+        .contextmenu;
+    }
+
+    .node_contextmenu {
+        .contextmenu;
+    }
+
+    .channel_contextmenu {
+        .contextmenu;
+    }
+
+    .test {
+        cursor: default;
+        z-index: 2;
+        position: absolute;
+        padding: 10px 15px;
+        background-color: #ffffff;
+        box-sizing: border-box;
+
+        &.test1 {
+            left: 200px;
+            top: 200px;
+        }
+
+        &.test2 {
+            left: 500px;
+            top: 400px;
+        }
+    }
+}

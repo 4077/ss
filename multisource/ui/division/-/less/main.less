@@ -1,0 +1,86 @@
+// head {
+@__nodeId__: ~"ss_multisource_ui_division__main";
+// }
+
+.@{__nodeId__} {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    font-size: 13px;
+
+    > .nav {
+        margin: 10px 0;
+
+        display: flex;
+        align-items: center;
+
+        .division_selector {
+
+            select {
+                padding: 3px;
+            }
+        }
+
+        .divisions_route_button {
+            cursor: pointer;
+            display: block;
+            padding: 5px;
+            margin-left: 5px;
+
+            .icon {
+                font-size: 14px;
+                color: #cccccc;
+            }
+
+            &:hover {
+
+                .icon {
+                    color: #606060;
+                }
+            }
+        }
+    }
+
+    > .tabs {
+        //margin-top: 10px;
+        margin: 10px -10px 0;
+        padding: 0 10px;
+
+        display: flex;
+        flex-shrink: 0;
+        background: linear-gradient(#e8e8e8, #dcdcdc);
+
+        .tab {
+            cursor: pointer;
+            padding: 10px 15px;
+            color: #383838;
+
+            &.selected {
+                cursor: default;
+                background-color: #FFFFFF;
+                color: #000;
+            }
+
+            &:hover {
+                background: linear-gradient(#FDFDFD, #F0F0F0);
+
+                &.selected {
+                    background: #FFFFFF;
+                }
+            }
+        }
+    }
+
+    > .content {
+        flex-grow: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        &.padding {
+            padding: 10px;
+        }
+    }
+}

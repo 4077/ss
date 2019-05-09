@@ -87,7 +87,5 @@ class Xhr extends \Controller
     {
         $this->c('\ewma~cache:reset', ['cssCompiler' => true]);
         $this->c('\ewma~css:increaseVersion');
-
-        $this->app->response->sendJson(['a' => -4]);
     }
 }

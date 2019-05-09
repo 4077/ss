@@ -1,0 +1,105 @@
+// head {
+@__nodeId__: ~"ss_multisource_ui_division_importersControls_importerMap__main";
+// }
+
+.@{__nodeId__} {
+    padding: 5px;
+
+    > .table {
+        display: table;
+        width: 100%;
+        border-spacing: 1px;
+        background-color: #d8d8d8;
+
+        .txtContainer {
+
+            > input {
+                background-color: #f5f5f5;
+                box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3) inset;
+            }
+
+            > textarea {
+                background-color: #f5f5f5;
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+                padding: 5px;
+                z-index: 2;
+                position: absolute;
+                left: -20px;
+                top: -1px;
+            }
+
+            > .txt {
+                padding: 6px 8px;
+            }
+        }
+
+        > .row {
+            position: relative;
+            display: table-row;
+            box-sizing: border-box;
+
+            > .cell {
+                position: relative;
+                cursor: pointer;
+                display: table-cell;
+                vertical-align: middle;
+
+                &.label {
+                    width: 1px;
+                    vertical-align: top;
+                    white-space: nowrap;
+                    background-color: #ffffff;
+                    padding: 6px 8px;
+
+                }
+
+                &.expression {
+                    cursor: pointer;
+                    position: relative;
+                    background-color: #ffffff;
+
+                    .txtContainer;
+                }
+
+                &.hover {
+                    background-color: #FAFAFA;
+                }
+            }
+
+            .delete_button {
+                display: none;
+                position: absolute;
+                right: 3px;
+                top: 3px;
+                cursor: pointer;
+                width: 20px;
+                height: 20px;
+                border-radius: 20px;
+                justify-content: center;
+                align-items: center;
+
+                background-color: #e4e4e4;
+
+                .icon {
+                    font-size: 14px;
+                    color: #808080;
+                }
+
+                &:hover {
+                    background-color: #ff0000;
+
+                    .icon {
+                        color: #ffffff;
+                    }
+                }
+            }
+
+            &:hover {
+
+                .delete_button {
+                    display: flex;
+                }
+            }
+        }
+    }
+}

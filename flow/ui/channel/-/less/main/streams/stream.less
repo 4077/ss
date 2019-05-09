@@ -1,0 +1,326 @@
+// head {
+@__nodeId__: ~"ss_flow_ui_channel__main_streams_stream";
+// }
+
+.@{__nodeId__} {
+    opacity: 0.3;
+
+    .toggle_stream_button() {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: #EE0000;
+
+        .icon {
+            font-size: 14px;
+        }
+
+        &:hover {
+            color: #dc8e94;
+        }
+
+        &.enabled {
+            color: #008800;
+
+            &:hover {
+                color: #7fa07e;
+            }
+        }
+    }
+
+    .toggle_field_button() {
+        cursor: pointer;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: #EE0000;
+
+        .icon {
+            font-size: 10px;
+        }
+
+        .label {
+            margin-left: 5px;
+        }
+
+        &:hover {
+            color: #ae0000;
+        }
+
+        &.enabled {
+            color: #008800;
+
+            &:hover {
+                color: #005a00;
+            }
+        }
+    }
+
+    .selector() {
+        padding: 2px;
+
+        select {
+            padding: 3px;
+        }
+
+        .locked {
+            padding: 6px 10px;
+            font-weight: bold;
+        }
+    }
+
+    .delete_button () {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+
+        margin-left: 5px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-radius: 20px;
+        color: #b0b0b0;
+
+        .icon {
+            font-size: 14px;
+        }
+
+        &:hover {
+            background-color: #ffeeee;
+            color: #ff0000;
+        }
+    }
+
+    > .cp {
+        display: flex;
+        align-items: center;
+
+        > .toggle_button {
+            .toggle_stream_button;
+        }
+
+        > .selector {
+            .selector;
+        }
+
+        > .delete_button {
+            .delete_button;
+        }
+    }
+
+    > .data {
+        padding: 5px 0 5px 30px;
+
+        display: flex;
+
+        > .field {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+
+            &.price {
+
+                > .toggle_button {
+                    .toggle_field_button;
+                }
+
+                .use_coefficients_table {
+                    padding: 2px;
+                    margin: 0 5px;
+
+                    select {
+                        padding: 2px;
+                    }
+                }
+
+                > .coefficient {
+                    display: flex;
+                    align-items: center;
+
+                    > .table_value {
+                        font-size: 12px;
+                        font-weight: bold;
+                        min-width: 30px;
+
+                        &.does_not_have {
+                            color: #ff0000;
+                        }
+                    }
+
+                    > .manual_value {
+                        position: relative;
+                        cursor: pointer;
+                        color: #008000;
+                        min-width: 30px;
+
+                        .txt {
+                            padding: 3px 5px;
+                        }
+
+                        input {
+                            box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3) inset;
+                            background-color: #deffde;
+                        }
+
+                        &:hover {
+                            background-color: #ddFFdd;
+                        }
+                    }
+                }
+
+                &.enabled {
+
+                    > .toggle_button {
+                        .toggle_field_button;
+                        .enabled;
+                    }
+                }
+            }
+
+            &.discount {
+
+                > .toggle_button {
+                    .toggle_field_button;
+                }
+
+                &.enabled {
+
+                    > .toggle_button {
+                        .toggle_field_button;
+                        .enabled;
+                    }
+                }
+            }
+        }
+    }
+
+    .warehouses {
+        padding: 0 0 0 30px;
+
+        .warehouse {
+            opacity: 0.3;
+
+            > .cp {
+                display: flex;
+                align-items: center;
+
+                > .toggle_button {
+                    .toggle_stream_button;
+                }
+
+                > .selector {
+                    .selector;
+                }
+
+                > .delete_button {
+                    .delete_button;
+                }
+
+                .data {
+                    //padding: 10px 0 10px 0;
+
+                    display: flex;
+
+                    > .field {
+                        display: flex;
+                        align-items: center;
+                        //margin: 0 5px;
+
+                        &.stock {
+
+                            > .toggle_button {
+                                .toggle_field_button;
+                            }
+
+                            &.enabled {
+
+                                > .toggle_button {
+                                    .toggle_field_button;
+                                    .enabled;
+                                }
+                            }
+                        }
+
+                        &.reserved {
+
+                            > .toggle_button {
+                                .toggle_field_button;
+                            }
+
+                            &.enabled {
+
+                                > .toggle_button {
+                                    .toggle_field_button;
+                                    .enabled;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.enabled {
+                opacity: 1;
+
+                > .cp {
+
+                    > .toggle_button {
+                        .toggle_stream_button;
+                        .enabled;
+                    }
+                }
+            }
+        }
+
+        .create_warehouses_stream_button {
+            cursor: pointer;
+
+            margin: 5px 0 10px;
+
+            width: 20px;
+            height: 20px;
+            border-radius: 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: #bfbfbf;
+
+            .icon {
+                font-size: 14px;
+            }
+
+            &:hover {
+                background-color: #EAEAEA;
+                color: #404040;
+            }
+        }
+    }
+
+    //
+    //
+    //
+
+    &.enabled {
+        opacity: 1;
+
+        > .cp {
+
+            > .toggle_button {
+                .toggle_stream_button;
+                .enabled;
+            }
+        }
+    }
+}

@@ -1,0 +1,209 @@
+// head {
+@__nodeId__: ~"ss_multisource_ui_inbox__main_importer_cp_report";
+// }
+
+.@{__nodeId__} {
+    margin-top: 15px;
+
+    .importer {
+        position: relative;
+        cursor: pointer;
+        margin: 4px 0;
+        padding: 5px;
+        background-color: #f9f9f9;
+        border: 1px solid #e6e6e6;
+        border-radius: 3px;
+
+        .name {
+            cursor: pointer;
+            padding: 2px 2px 6px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .import_button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 60px;
+            height: 30px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: #ffffff;
+            color: #326b00;
+            border-radius: 3px;
+
+            opacity: 0;
+            transition: opacity .3s;
+
+            .icon {
+                font-size: 18px;
+            }
+
+            &:hover {
+                background-color: #61d000;
+                color: #ffffff;
+            }
+        }
+
+        .break_button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 60px;
+            height: 30px;
+
+            display: none;
+            justify-content: center;
+            align-items: center;
+
+            background-color: #ffffff;
+            color: #ff3737;
+            border-radius: 3px;
+
+            opacity: 0;
+            transition: opacity .3s;
+
+            .icon {
+                font-size: 18px;
+            }
+
+            &:hover {
+                background-color: #dc0000;
+                color: #ffffff;
+            }
+        }
+
+        .cells {
+            display: flex;
+
+            .cell {
+                cursor: default;
+                margin: 1px;
+                padding: 5px;
+
+                &.matched {
+                    background-color: #ffffff;
+                    color: #23981d;
+                }
+
+                &.not_matched {
+                    background-color: #ffdadf;
+                    color: #b30000;
+                }
+            }
+        }
+
+        .bottom_bar {
+            margin-top: 5px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .sheets {
+                display: flex;
+
+                .sheet {
+                    width: 16px;
+                    height: 16px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    opacity: 0.3;
+
+                    .icon {
+                        font-size: 10px;
+                    }
+
+                    &.detected {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .imported_datetime {
+                font-size: 11px;
+                color: #006600;
+            }
+
+            .proc {
+                cursor: pointer;
+                overflow: hidden;
+                display: none;
+
+                .progress {
+                    position: relative;
+                    background-color: #003e14;
+
+                    min-width: 200px;
+                    width: 100%;
+                    height: 16px;
+                    border-radius: 3px;
+                    overflow: hidden;
+
+                    .bar {
+                        height: 100%;
+                        background-color: #008831;
+                        color: #FFFFFF;
+
+                        transition: width 1s linear;
+
+                        &.no_transition {
+                            transition: none !important;
+                        }
+                    }
+
+                    .info {
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                        padding: 3px 0;
+                        color: #FFFFFF;
+                        text-align: center;
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        font-size: 11px;
+
+                        .comment {
+                            margin-right: 5px;
+                            font-weight: bold;
+                        }
+
+                        .position {
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &:hover {
+            background-color: #f0f0f0;
+
+            .import_button {
+                opacity: 1;
+            }
+
+            .break_button {
+                opacity: 1;
+            }
+        }
+
+        &.matched {
+            background-color: #e4ffc3;
+            border-color: #bbe488;
+
+            &:hover {
+                background-color: #dbf4ba;
+            }
+        }
+    }
+}
