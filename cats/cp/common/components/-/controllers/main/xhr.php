@@ -77,7 +77,7 @@ class Xhr extends \Controller
                         'cat' => pack_model($cat)
                     ])
                     : false,
-                'class' => 'padding'
+                'class' => ''
             ]);
         }
     }
