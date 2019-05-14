@@ -85,7 +85,7 @@ class Report extends \Controller
                     : '',
             ]);
 
-            $matches = _j($pivot->matches);
+            $matches = _j($pivot->matches) ?? [];
 
             foreach ($matches as $coord => $data) {
                 $v->assign('importer/cell', [

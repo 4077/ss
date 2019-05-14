@@ -35,6 +35,8 @@ class ImportersDetector extends \Controller
         if ($spreadsheet = $this->getSpreadsheet($attachment)) {
             $email = $attachment->message->from;
 
+            \ss\multisource\models\InboxAttachmentImporter::where('attachment_id', $attachment->id)->delete();
+
             $this->log('attachment_id=' . $attachment->id . ' (' . $attachment->name . ' from ' . $email . ')');
 
             $detected = false;
