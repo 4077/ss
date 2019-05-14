@@ -46,28 +46,37 @@ class ImportersDetector extends \Controller
                     $this->log();
                     $this->log('TRY importer: ' . ($importer->name ?: '...') . ' (division: ' . $importer->division->name . ')');
 
-                    $attempt = $this->tryImporter($spreadsheet, $importer);
-
-                    $aiPivot = $this->getAIPivot($attachment, $importer);
-
-                    $aiPivot->matches = j_($attempt['matches']);
-                    $aiPivot->sheet_index = $attempt['sheet_index'];
-
-                    if ($attempt['matched']) {
-                        $attachment->encoding = $attempt['encoding'];
-                        $attachment->sheets_names = j_($attempt['sheets_names']);
-                        $aiPivot->matched = true;
-
-                        $this->log('DETECTED with encoding: ' . $attempt['encoding']);
-
-                        $detected = true;
-                    } else {
-                        $aiPivot->matched = false;
-
-                        $this->log('NOT DETECTED');
+                    $fileMatched = true;
+                    if ($filenameRegexp = $importer->filename_regexp) {
+                        $fileMatched = preg_match('/' . $filenameRegexp . '/U', $attachment->name);
                     }
 
-                    $aiPivot->save();
+                    if ($fileMatched) {
+                        $attempt = $this->tryImporter($spreadsheet, $importer);
+
+                        $aiPivot = $this->getAIPivot($attachment, $importer);
+
+                        $aiPivot->matches = j_($attempt['matches']);
+                        $aiPivot->sheet_index = $attempt['sheet_index'];
+
+                        if ($attempt['matched']) {
+                            $attachment->encoding = $attempt['encoding'];
+                            $attachment->sheets_names = j_($attempt['sheets_names']);
+                            $aiPivot->matched = true;
+
+                            $this->log('DETECTED with encoding: ' . $attempt['encoding']);
+
+                            $detected = true;
+                        } else {
+                            $aiPivot->matched = false;
+
+                            $this->log('NOT DETECTED');
+                        }
+
+                        $aiPivot->save();
+                    } else {
+                        $this->log('NOT MATCHED filename: ' . $attachment->name . ' (regexp: ' . $filenameRegexp . ')');
+                    }
                 }
             } else {
                 $this->log('not found importers');
