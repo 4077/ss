@@ -8,7 +8,7 @@ class App extends \Controller
 
         $tab = $s['tab'];
 
-        remap($s['dialog_data'][$tab], $this->data, 'pluginOptions/width, pluginOptions/height');
+        remap($s['dialog_data'][$tab], $this->data, 'autofit, pluginOptions/width, pluginOptions/height');
     }
 
     public function getTabDialogData()
