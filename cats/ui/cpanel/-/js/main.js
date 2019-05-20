@@ -61,6 +61,40 @@ var __nodeNs__ = "ss_cats_ui_cpanel";
                     buttonsTouch = Date.now();
                 });
             });
+
+            var $dialogsTmpStashButton = $(".dialogs_tmp_stash.button", $w);
+
+            $dialogsTmpStashButton.click(function () {
+                var dialogs = w.w('dialogs');
+
+                var enabled = dialogs.tmpStashToggle();
+
+                $dialogsTmpStashButton.toggleClass("enabled", enabled);
+            });
+
+            ewma.bind('std/ui/dialogs/tmpStashToggle', function (enabled) {
+                $dialogsTmpStashButton.toggleClass("enabled", enabled);
+            });
+        },
+
+        render: function () {
+            var w = this;
+            var o = w.options;
+            var $w = w.element;
+
+            var $buttons = $(".buttons", $w);
+
+            if (o.buttonsVisible && o.editable) {
+                $buttons.css({display: "flex"});
+            }
+
+            setTimeout(function () {
+                if (w.w('dialogs').options.tmpStash) {
+                    var $dialogsTmpStashButton = $(".dialogs_tmp_stash.button", $w);
+
+                    $dialogsTmpStashButton.addClass("enabled");
+                }
+            })
         },
 
         _showButtons: function ($buttons) {

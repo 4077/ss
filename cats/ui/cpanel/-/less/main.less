@@ -87,6 +87,21 @@
                 color: #DA0000;
             }
 
+            &.dialogs_tmp_stash {
+
+                .icon {
+                    transition: all .3s;
+                    font-size: 10px;
+                }
+
+                &.enabled {
+
+                    .icon {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+
             &:hover {
                 background-color: #FFFDD1;
             }
