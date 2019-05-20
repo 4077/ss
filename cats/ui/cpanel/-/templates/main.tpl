@@ -8,6 +8,10 @@
         <!-- button -->
         {CONTENT}
         <!-- / -->
+        <div class="dialogs_tmp_stash button">
+            <i class="icon fa fa-chevron-left"></i>
+            <i class="icon fa fa-chevron-right"></i>
+        </div>
     </div>
 
 </div>

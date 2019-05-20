@@ -41,6 +41,9 @@ class Main extends \Controller
         $this->css();
 
         $this->widget(':|', [
+            '.w'             => [
+                'dialogs' => $this->_w('\std\ui\dialogs~dispatcher:')
+            ],
             '.e'             => [
                 'ss/cpanel/buttons_toggle' => 'buttonsToggle'
             ],

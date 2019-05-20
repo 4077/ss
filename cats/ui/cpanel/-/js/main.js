@@ -12,6 +12,15 @@ var __nodeNs__ = "ss_cats_ui_cpanel";
             var o = w.options;
             var $w = w.element;
 
+            w.render();
+            w.bind();
+        },
+
+        bind: function () {
+            var w = this;
+            var o = w.options;
+            var $w = w.element;
+
             var $buttons = $(".buttons", $w);
             var $mainButton = $(".global_editable_toggle_button", $w);
 
