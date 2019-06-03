@@ -38,4 +38,9 @@ class App extends \Controller
             $pivot->save();
         }
     }
+
+    public function dialogDataUpdate()
+    {
+        $this->se('ss/cats/componentCpDialogUpdate')->trigger($this->data);
+    }
 }

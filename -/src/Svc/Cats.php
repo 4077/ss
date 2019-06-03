@@ -280,6 +280,8 @@ class Cats extends \ewma\Service\Service
         $value = $this->apComponentPivotData($pivot, $path);
 
         $this->apComponentPivotData($pivot, $path, !$value);
+
+        return $value;
     }
 
     public function apComponentPivotData(\ss\models\CatComponent $pivot, $path, $value = null)

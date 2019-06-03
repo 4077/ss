@@ -67,17 +67,20 @@ class Xhr extends \Controller
             }
 
             $this->c('\std\ui\dialogs~:open:component_' . $instance . '_' . $pivot->component_id . ', ss|', [
-                'path'  => '@component~:view',
-                'data'  => [
+                'path'      => '@component~:view',
+                'data'      => [
                     'pivot'    => pack_model($pivot),
                     'instance' => $instance
                 ],
-                'title' => $titleCallPath
+                'title'     => $titleCallPath
                     ? $this->_abs($titleCallPath, [
                         'cat' => pack_model($cat)
                     ])
                     : false,
-                'class' => ''
+                'class'     => '',
+                'callbacks' => [
+                    'update' => $this->_p('~app:dialogDataUpdate')
+                ]
             ]);
         }
     }
