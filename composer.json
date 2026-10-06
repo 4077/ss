@@ -21,6 +21,6 @@
         "fed/js-paper": "~0.1",
         "fed/std-ui-camera": "~0.1",
         "fain182/ext-imap-polyfill": "^0.5.1",
-        "phpoffice/phpspreadsheet": "^1.5"
+        "phpoffice/phpspreadsheet": "^5.10"
     }
 }
